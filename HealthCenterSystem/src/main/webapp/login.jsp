@@ -12,16 +12,33 @@
     <body>
         <div id="content">
             <div style="width: 240px; margin-left: auto; margin-right: auto; margin-top: 150px">
-                <h1>Health Center - Posto de Saúde</h1>
+                <h1>Health Center</h1>
 
                 <form id="frm" action="" method="post">
-
-
-                        <input type="text" value="" name="usuario" />
-
-                        <h:inputSecret value="" size="20"/>
-
-                        <input type="submit" value="Entrar"/>
+                    <table>
+                        <tr>
+                            <td>
+                                <label>Usuário:</label>
+                            </td>
+                            <td>
+                                <input type="text" value="" name="usuario" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Senha:</label>
+                            </td>
+                            <td>
+                                <input type="password" value="" size="20"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input id="btnLogin" type="submit" value="Entrar"/>
+                            </td>
+                        </tr>
+                    </table>
                 </form>
             </div>
         </div>
