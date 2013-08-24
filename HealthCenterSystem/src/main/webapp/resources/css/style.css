@@ -76,7 +76,7 @@ logo{
 }
 
 h1 {
-	background: url("imagens/tela.png") no-repeat 0px 3px;
+	background: url("../../imagens/tela.png") no-repeat 0px 3px;
 	padding-left: 24px;
 	font-size: 20px;
 	font-family: Arial, Helvetica, sans-serif;
