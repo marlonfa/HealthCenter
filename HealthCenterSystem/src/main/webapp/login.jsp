@@ -14,7 +14,7 @@
             <div style="width: 240px; margin-left: auto; margin-right: auto; margin-top: 150px">
                 <h1>Health Center</h1>
 
-                <form id="frm" action="" method="post">
+                <form id="frm" action="HealthCenterServlet" method="post">
                     <table>
                         <tr>
                             <td>

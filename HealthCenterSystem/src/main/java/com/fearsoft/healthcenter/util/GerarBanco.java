@@ -11,8 +11,6 @@ import com.fearsoft.healthcenter.enums.EstadoCivil;
 import com.fearsoft.healthcenter.enums.Sexo;
 import com.fearsoft.healthcenter.jpa.MedicoDao;
 import java.util.Calendar;
-import java.util.Date;
-import org.hibernate.Session;
 
 /**
  *
