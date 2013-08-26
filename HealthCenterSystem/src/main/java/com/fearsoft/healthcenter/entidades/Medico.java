@@ -4,17 +4,26 @@
  */
 package com.fearsoft.healthcenter.entidades;
 
+import java.io.Serializable;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
 /**
  *
  * @author marlon
  */
-public class Medico {
+@Entity
+/*
+ * a anotação @DiscriminatorValue fornece o valor correspondente à entidades
+ * desta classe. Dado que todos os objetos derivados de Pessoa serão armazenados
+ * em uma única tabela
+ */
+@DiscriminatorValue("medico")
+public class Medico extends Pessoa implements Serializable {
     
     @Column(name = "crm", length = 20, nullable = false)
     private String crm;
-    
     @Column(name = "especialidade", length = 50, nullable = false)
     private String especialidade;
 
@@ -38,5 +47,4 @@ public class Medico {
     public String toString() {
         return "Medico{" + "crm=" + crm + ", especialidade=" + especialidade + '}';
     }
-    
 }

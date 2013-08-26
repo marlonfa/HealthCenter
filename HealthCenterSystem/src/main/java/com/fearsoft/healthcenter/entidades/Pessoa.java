@@ -6,13 +6,23 @@ package com.fearsoft.healthcenter.entidades;
 
 import com.fearsoft.healthcenter.enums.EstadoCivil;
 import com.fearsoft.healthcenter.enums.Sexo;
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,7 +30,23 @@ import javax.persistence.TemporalType;
  *
  * @author marlon
  */
-public abstract class Pessoa {
+@Entity
+@Table(name = "pessoa")
+
+/*
+ * A anotação @Inheritance estabelece a estratégia a ser empregada.
+ * Neste caso, uma única tabela será empregada para 
+ * registrar toda e qualquer instância derivada de Pessoa
+ */
+@Inheritance(strategy = InheritanceType.JOINED)
+/*
+ * A anotação @Discrimnator estabelece como será feita a distinção
+ * entre registros armazenados nesta única tabela de tal forma que seja
+ * possível estabelecer quais campos foram empregados (um subconjunto
+ * dos campos para cada subclasse).
+ */
+@DiscriminatorColumn(name = "tipo")
+public abstract class Pessoa implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,11 +56,11 @@ public abstract class Pessoa {
     @Column(name = "nome", length = 100, nullable = false)
     private String nome;
     
-    @Column(name = "naturalidade", length = 30)
+    @Column(name = "naturalidade", length = 30, nullable = false)
     private String naturalidade;
     
     @Temporal(TemporalType.DATE)
-    @Column(name = "dataNascimento", length = 8, nullable = false)
+    @Column(name = "data_nascimento", length = 8, nullable = false)
     private Date dataNascimento;
     
     @Enumerated(EnumType.STRING)
@@ -48,12 +74,20 @@ public abstract class Pessoa {
     private String rg;
     
     @Enumerated(EnumType.STRING)
-    @Column(name = "estadoCivil", length = 20, nullable = false)
+    @Column(name = "estado_civil", length = 20, nullable = false)
     private EstadoCivil estadoCivil;
     
     @Column(name = "senha", length = 6)
     private String senha;
 
+    @JoinColumn(name = "contato")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Contato contato;
+    
+    @JoinColumn(name = "endereco")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Endereco endereco;
+    
     public Long getId() {
         return id;
     }
@@ -126,8 +160,25 @@ public abstract class Pessoa {
         this.senha = senha;
     }
 
+    public Contato getContato() {
+        return contato;
+    }
+
+    public void setContato(Contato contato) {
+        this.contato = contato;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
     @Override
     public String toString() {
-        return "Pessoa{" + "nome=" + nome + ", naturalidade=" + naturalidade + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", cpf=" + cpf + ", rg=" + rg + ", estadoCivil=" + estadoCivil + ", senha=" + senha + '}';
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", naturalidade=" + naturalidade + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", cpf=" + cpf + ", rg=" + rg + ", estadoCivil=" + estadoCivil + ", senha=" + senha + ", contato=" + contato + ", endereco=" + endereco + '}';
     }
+
 }

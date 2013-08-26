@@ -11,9 +11,8 @@ import com.fearsoft.healthcenter.entidades.Enfermeiro;
  * @author marlon
  */
 public class EnfermeiroDao extends AbstractDao<Enfermeiro>{
-
+    
     public EnfermeiroDao() {
         super(Enfermeiro.class);
     }
-    
 }

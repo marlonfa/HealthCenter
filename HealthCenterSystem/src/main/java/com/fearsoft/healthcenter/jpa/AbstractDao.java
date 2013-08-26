@@ -4,7 +4,10 @@
  */
 package com.fearsoft.healthcenter.jpa;
 
+import com.fearsoft.healthcenter.util.HibernateUtil;
 import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.criterion.Restrictions;
 /**
  *
  * @author marlon
@@ -17,17 +20,88 @@ public abstract class AbstractDao<T> {
     }
     
     public void persist(T object) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        if(session.beginTransaction() == null){
+            session.beginTransaction();
+        }
+        try{
+            session.saveOrUpdate(object);
+            session.getTransaction().commit();
+        }        
+        catch(Exception e){
+            System.out.println("Erro ao Persistir "+e);
+            session.getTransaction().rollback();
+        }finally{
+            session.close();
+        }
     }
     
     public void delete(T object) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        if(session.beginTransaction() == null){
+            session.beginTransaction();
+        }
+        try{
+            session.delete(object);
+            session.getTransaction().commit();
+        }catch(Exception e){
+            System.out.println("Erro ao Remover ERRO: "+ e);
+            session.getTransaction().rollback();           
+        }finally{
+            session.close();
+        }
     }  
     
+    public List findFilter(String parametro, Object valor){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        if(session.beginTransaction() == null){
+            session.beginTransaction();
+        }
+        try{
+            session.beginTransaction();
+            List lista = session.createCriteria(entityClass)
+                    .add(Restrictions.like(parametro, "%"+valor+"%")).list();
+            session.getTransaction().commit();
+            return lista;
+        }        
+        catch(Exception e){
+            System.out.println("Erro ao Buscar Filtrando "+e);
+            session.getTransaction().rollback();
+        }finally{
+            session.close();
+        }
+        return null;
+    }
+    
     public T find(Object id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            Object object = session.createCriteria(entityClass)
+                    .add(Restrictions.eq("id", id)).list().get(0);
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            System.out.println("Erro ao Buscar pelo ID");
+            session.getTransaction().rollback();
+        }finally{
+            session.close();
+        }
         return null;   
     }
         
     public List<T>findAll(){   	
-        return null;
-
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<T>list = null;
+        try{
+            session.beginTransaction();
+            list = session.createCriteria(entityClass).list();
+            session.getTransaction().commit();            
+        }catch(Exception e){
+            System.out.println("Erro ao Buscar "+e);
+            session.getTransaction().rollback();
+        }finally{
+            session.close();
+        }
+        return list;
     }
 }
