@@ -1,6 +1,6 @@
 <%-- 
-    Document   : home
-    Created on : 23/08/2013, 20:42:41
+    Document   : negado
+    Created on : 30/08/2013, 16:38:11
     Author     : marlon
 --%>
 
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Health Center</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bem Vindo ao Sistema!!!</h1>
+        <h1>VOCÊ É UM IDIOTA, NÃO PODE ACESSAR ISSO!!!</h1>
     </body>
 </html>

@@ -7,50 +7,23 @@
 */
 body{
 	font-family: Arial, Helvetica, sans-serif;
-}
-
-#header{
-	width: 800px;
-	font-size: 12px;
-	margin:0 auto;
-}
-
-#loginDiv{
-	width: 800px;
-	text-align: left;
-	font-size: 11px;
-	margin:0 auto;	
-	margin-left: 80%;
-}
-
-#loginDiv p{
-	margin-bottom: 0px;
-	margin-top: 0px;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
 }
 
 
-
-.usuario{
-	color: blue;
-	font-weight: bold;	
-	font-size: 11px;
+#table_login{
+    background-color: rgb(166, 195, 80);
 }
 
-#footer {
-	width: 800px;
-	text-align: center;
-	font-size: 10px;
-	color: #9b9b9b;
-	margin-top: 10px;
-	border-top: 1px solid #cfcfcf;
-	margin:0 auto;
-	margin-top: 20px;
+#content_login{
+    margin: 0 auto;
 }
 
 #content{
 	width: 800px;
 	font-size: 12px;
-	margin:0 auto;
 }
 
 #paragrafoHome{
@@ -59,16 +32,6 @@ body{
 	padding-right: 70px;
 	font-family: Arial, Helvetica, sans-serif;
 }
-
-#logoDiv{
-	text-align: center;
-	font-size: 20px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	color: #3e3e3e;
-	letter-spacing: -1px;
-}
-
 
 logo{
 	margin-left: 5px;
@@ -85,11 +48,16 @@ h1 {
 	letter-spacing: -1px;
 }
 
+h2{
+    color: #3e3e3e;
+}
+
 table {
-	background-color: #f2f2f2;
+        background-color: rgb(127, 192, 203); 
 	border-radius: 8px;
 	border: 1px solid #cccccc;
 	margin-top: 8px;
+        color: white;
 }
 
 label {
@@ -106,3 +74,104 @@ td {
     text-align: right;
     margin-right: 0;
 }
+
+/* Layout Divs
+-----------------------------------------------------------------------------*/
+
+#div_header{
+    width: 100%;
+    float: top;
+    background-color: rgb(166, 195, 80);
+    text-align: right;
+    padding-top: 15px;
+    height: 40px;
+    position: absolute;
+    color: white;
+    margin-bottom: 0px;
+}
+
+#div_logo{
+    background: url("../../imagens/dr.png") no-repeat 3px 3px;
+    width: 260px;
+    height: 150px;
+    position: relative;
+    float: top;
+    margin-left: 10px;
+}
+
+#div_menu{
+    width: 240px;
+    float: left;
+    margin-right: 0px;
+    border-right: 0px;
+    position: relative;
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #cccccc;
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+#div_content{
+    float: left;
+    position: relative;
+    padding-top: 0px;
+}
+
+#div_footer{
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    color: #9b9b9b;
+    float: left;
+    position: relative;
+    margin-top: 30px;
+}
+
+/* Fim Layout Divs
+-----------------------------------------------------------------------------*/
+
+/* Menu
+-----------------------------------------------------------------------------*/
+
+#nav ul {
+	list-style: none;
+	margin: 0;
+        padding-left: 0px;
+}
+
+#nav li{
+	font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+}
+
+#nav li a:link, #nav li a:visited {
+	font-size: 12px;
+	display: block;
+	padding: 19px 45px 19px 45px;
+	margin-top:-10px;
+        color: #3e3e3e;
+        font-weight: bold;
+	text-decoration: none;
+	right:11px;
+}
+
+#nav li a:hover, #nav li a:focus {
+	background: url(../../imagens/nav.png) no-repeat;
+	background-position: -232px 0;
+	color: #fff;
+	left:-6px;
+	margin-top:-10px;
+}
+
+#itemMenu {
+	background: url(../../imagens/nav.png) no-repeat;
+	color: #fff;
+	left:-6px;
+	padding:18px 18px 18px 40px;
+	width:174px;
+}
+
+/* Fim Menu
+-----------------------------------------------------------------------------*/

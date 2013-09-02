@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+    "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
     <head>
@@ -10,18 +10,18 @@
         <title>Health Center - Login</title>
     </head>
     <body>
-        <div id="content">
+        <div id="content_login">
             <div style="width: 240px; margin-left: auto; margin-right: auto; margin-top: 150px">
                 <h1>Health Center</h1>
 
-                <form id="frm" action="HealthCenterServlet" method="post">
-                    <table>
+                <form action="j_spring_security_check" method="post">
+                    <table id="table_login">
                         <tr>
                             <td>
                                 <label>Usuário:</label>
                             </td>
                             <td>
-                                <input type="text" value="" name="usuario" />
+                                <input type="text" name="j_username" value="${not empty login_error ? SPRING_SECURITY_LAST_USERNAME : ''}" />
                             </td>
                         </tr>
                         <tr>
@@ -29,13 +29,13 @@
                                 <label>Senha:</label>
                             </td>
                             <td>
-                                <input type="password" value="" size="20"/>
+                                <input type="password" name="j_password" size="20"/>
                             </td>
                         </tr>
                         <tr>
                             <td></td>
                             <td>
-                                <input id="btnLogin" type="submit" value="Entrar"/>
+                                <input id="btnLogin" type="submit" value="Efetuar Login"/>
                             </td>
                         </tr>
                     </table>

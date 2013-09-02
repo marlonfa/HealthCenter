@@ -13,6 +13,9 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
+        
+        <org.springframework.version>3.1.4.RELEASE</org.springframework.version>
+        <spring-security.version>3.1.4.RELEASE</spring-security.version>
     </properties>
 
     <dependencies>
@@ -59,6 +62,35 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency> 
+        
+      
+        
+       <!-- Spring MVC depends on spring-core, spring-beans, spring-context, spring-web -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${org.springframework.version}</version>
+        </dependency>
+         
+        <!-- Spring Security Dependencies -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring-security.version}</version>
+         </dependency>
+         
+         <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring-security.version}</version>
+          </dependency>
+          
+          <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring-security.version}</version>
+          </dependency>
+            
         
     </dependencies>
 
