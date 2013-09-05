@@ -4,8 +4,15 @@
  */
 package com.fearsoft.healthcenter.servlet;
 
+import com.fearsoft.healthcenter.controladores.MedicoControle;
+import com.fearsoft.healthcenter.entidades.Contato;
+import com.fearsoft.healthcenter.entidades.Endereco;
+import com.fearsoft.healthcenter.entidades.Medico;
+import com.fearsoft.healthcenter.enums.EstadoCivil;
+import com.fearsoft.healthcenter.enums.Sexo;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.Date;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,77 +23,66 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Eder Ferreira
  */
-@WebServlet(name = "HealthCenterServlet", urlPatterns = {"/HealthCenterServlet"})
+@WebServlet(name = "HealthCenterServlet", urlPatterns = {"/administrador/HealthCenterServlet"})
 public class HealthCenterServlet extends HttpServlet {
+    private MedicoControle medicoControle;
 
-    /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HealthCenterServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet HealthCenterServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {            
-            out.close();
-        }
+        medicoControle = new MedicoControle();
+        cadastrarMedico(request, response, null);
+        
+        
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP
-     * <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP
-     * <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private void cadastrarMedico(HttpServletRequest request, HttpServletResponse response, Medico medico) throws ServletException, IOException{
+        if(null == medico){
+            medico = new Medico();
+            medico.setEndereco(new Endereco());
+            medico.setContato(new Contato());
+        }        
+        medico.setNome(request.getParameter("nome"));
+        medico.setNaturalidade(request.getParameter("naturalidade"));
+        medico.setEspecialidade(request.getParameter("especialidade"));
+        medico.setDataNascimento(new Date());
+        medico.setSexo(Sexo.MASCULINO);
+        medico.setEstadoCivil(EstadoCivil.DIVORCIADO);
+        medico.setCpf(request.getParameter("cpf"));
+        medico.setRg(request.getParameter("rg"));
+        medico.setCrm(request.getParameter("crm"));
+        
+        medico.getEndereco().setNomeEndereço(request.getParameter("nomeEndereco"));
+        medico.getEndereco().setNumero(Integer.parseInt(request.getParameter("numeroEndereco")));
+        medico.getEndereco().setComplemento(request.getParameter("complemento"));
+        medico.getEndereco().setBairro(request.getParameter("bairro"));
+        medico.getEndereco().setCidade(request.getParameter("cidade"));
+        medico.getEndereco().setCep(request.getParameter("cep"));
+        
+        medico.getContato().setTelefone(request.getParameter("telefone"));
+        medico.getContato().setCelular(request.getParameter("celular"));
+        medico.getContato().setEmail(request.getParameter("email"));
+        medico.setSenha(request.getParameter("senha"));
+        
+        medicoControle.createOrSave(medico);
+        request.setAttribute("medico", medico);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/administrador/viewMedico.jsp");
+        dispatcher.forward(request, response);
+    }
 }

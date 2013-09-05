@@ -21,10 +21,7 @@ body{
     margin: 0 auto;
 }
 
-#content{
-	width: 800px;
-	font-size: 12px;
-}
+
 
 #paragrafoHome{
 	text-align: justify;
@@ -113,7 +110,19 @@ td {
     margin-left: 10px;
 }
 
+#div_mensagens{
+    width: 100%;
+    float: left;
+}
+
+#content{
+	width: 100%;
+	font-size: 12px;
+        float: right;  
+}
+
 #div_content{
+    width: 800px;
     float: left;
     position: relative;
     padding-top: 0px;
@@ -175,3 +184,23 @@ td {
 
 /* Fim Menu
 -----------------------------------------------------------------------------*/
+
+label.error{
+        padding: 8px 35px 8px 14px;
+        margin-bottom: 6px;
+        text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+        text-align: center;
+        font-size: 12px;
+        background-color: #fcf8e3;
+        border: 1px solid #fbeed5;
+        border-radius: 4px;
+        color: #b94a48;
+        background-color: #f2dede;
+        border-color: #eed3d7;
+        float: left;
+        width: 100%;
+}
+
+input.error {
+	border: 1px solid red;
+}

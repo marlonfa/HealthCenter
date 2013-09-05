@@ -9,9 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../resources/css/style.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="../resources/js/ajax.js"></script>
-        <title>Health Center</title>
+        <link href="../resources/css/style.css" rel="stylesheet" type="text/css" />
+        
+        <script type="text/javascript" src="../resources/js/jquery-1.10.2.js"></script>
+        <script type="text/javascript" src="../resources/js/jQueryDynamicContent.js"></script>
+        <script type="text/javascript" src="../resources/js/jquery.maskedinput.min.js"></script> 
+        <script type="text/javascript" src="../resources/js/jQueryValidate.js"></script> 
+        <script type="text/javascript" src="../resources/js/jQueryValidaCPJeCNPJ.js"></script>
+        
+                    
     </head>
     <body>
         
@@ -24,12 +30,13 @@
         <div id="div_menu">
             <jsp:include page="../template/menuadmin.jsp" />
         </div>
+        
         <div id="div_content">
+           
             
         </div>
         <div id="div_footer">
             <jsp:include page="../template/footer.jsp" />
         </div>
-        
     </body>
 </html>

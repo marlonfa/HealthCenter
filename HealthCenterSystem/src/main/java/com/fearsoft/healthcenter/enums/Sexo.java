@@ -10,13 +10,14 @@ package com.fearsoft.healthcenter.enums;
  */
 public enum Sexo {
     MASCULINO("Masculino"),
-    FEMININO("Feminino"); 
+    FEMININO("Feminino");
     
     private String sexo;
+    
     private Sexo(String sexo){
         this.sexo = sexo;
     }
-    
+        
     public String getSexo(){
         return this.sexo;
     }

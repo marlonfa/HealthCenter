@@ -1,15 +1,15 @@
 <div id="nav">
 
-        <ul>
+    <ul id="menu">
             <li id="itemMenu">Cadastro</li>
             
-            <li><a href="javascript:open('../administrador/cadEnfermeiro.jsp')">Enfermeiro</a></li>
-            <li><a href="javascript:open('../administrador/cadMedico.jsp')">Médico</a></li>
-            <li><a href="javascript:open('../administrador/cadRecepcionista.jsp')">Recepcionista</a></li>
+            <li><a href="#cadEnfermeiro">Enfermeiro</a></li>
+            <li><a href="#cadMedico">Médico</a></li>
+            <li><a href="#cadRecepcionista">Recepcionista</a></li>
             <li id="itemMenu">Pesquisa</li>
-            <li><a href="javascript:open('../administrador/pesqEnfermeiro.jsp')">Enfermeiro</a></li>
-            <li><a href="javascript:open('../administrador/pesqMedico.jsp')">Médico</a></li>
-            <li><a href="javascript:open('../administrador/pesqRecepcionista.jsp')">Recepcionista</a></li>
+            <li><a href="#pesqEnfermeiro">Enfermeiro</a></li>
+            <li><a href="#pesqMedico">Médico</a></li>
+            <li><a href="#pesqRecepcionista">Recepcionista</a></li>
         </ul>
 
  </div>

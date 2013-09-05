@@ -31,7 +31,7 @@ public class Endereco implements Serializable {
     @Column(length = 30)
     private String bairro;
     
-    @Column(length = 4)
+    @Column(length = 6)
     private int numero;
     
     @Column(length = 30)
@@ -40,7 +40,7 @@ public class Endereco implements Serializable {
     @Column(length = 8, nullable = false)
     private String cep;
     
-    @Column(length = 29, nullable = false)
+    @Column(length = 50, nullable = false)
     private String cidade;
 
     public Long getId() {
