@@ -96,8 +96,13 @@
 //    });
 </script>
 <script>
- 
-function cadMedico(){
+    $(document).ready( function (){
+    var nome = ${medico.nome};
+    $('#nome').val(nome);
+});
+    
+    
+function editMedico(){
     $.ajax({
         url: "MedicoServlet",  
         type: "POST",  
@@ -106,7 +111,7 @@ function cadMedico(){
               '&cpf='+ $('#cpf').val() +'&rg='+ $('#rg').val() +'&crm='+ $('#crm').val() +'&nomeEndereco='+ $('#nomeEndereco').val() +
               '&numeroEndereco='+ $('#numeroEndereco').val() +'&complemento='+ $('#complemento').val() +'&bairro='+ $('#bairro').val() +
               '&cidade='+ $('#cidade').val() +'&cep='+ $('#cep').val() +'&telefone='+ $('#telefone').val() +'&celular='+ $('#celular').val() +
-              '&email='+ $('#email').val() +'&senha='+ $('#senha').val() +'&tipoOperacao='+ $('#operacao').val()
+              '&email='+ $('#email').val() +'&senha='+ $('#senha').val() +'&tipoOperacao='+ $('#operacao').val() +'&id='+ ${medico.id}
     }); 
     $("#dialog-message" ).dialog({
       modal: true,
@@ -121,15 +126,17 @@ function cadMedico(){
       }
     });
 }; 
+
+
 </script>
         <title>Health Center - Cadastro de Médico</title>
     </head>
     <body>
-        <h1>Cadastro de Médico</h1>
+        <h1>Edição de Médico</h1>
            <div id="div_mensagens" ></div>
         <div id="content">
-                
-            <form>
+                <form>
+              
                     <table>
                         <tr>
                             <td colspan="8">
@@ -149,7 +156,7 @@ function cadMedico(){
                                 <label>Naturalidade:</label>
                             </td>
                             <td>
-                                <input type="text" id="naturalidade" name="naturalidade" size="20" placeholder="Digite a naturalidade"/>
+                                <input type="text" id="naturalidade" name="naturalidade" size="20" placeholder="Digite a naturalidade" value="${medico.naturalidade}" />
                             </td>
                             <td>
                                 <label>Especialidade:</label>
@@ -166,7 +173,7 @@ function cadMedico(){
                                 <label>Data Nasc.:</label>
                             </td>
                             <td>
-                                <input type="text" id="dataNascimento" name="dataNascimento" size="20" placeholder="__/__/____"/>
+                                <input type="text" id="dataNascimento" name="dataNascimento" size="20" placeholder="__/__/____" value="${medico.dataNascimento}" />
                             </td>
                             <td>
                                 <label>Sexo:</label>
@@ -184,7 +191,7 @@ function cadMedico(){
                                 <c:set var="estadoCivilValues" value="<%=EstadoCivil.values()%>"/>
                                 <select id="estadoCivil" name="estadoCivil">
                                     <c:forEach items="${estadoCivilValues}" var="estadoCivil">
-                                        <option value="${estadoCivil}" >${estadoCivil.getEstadoCivil()}</option>
+                                        <option value="${medico.estadoCivil}" >${estadoCivil.getEstadoCivil()}</option>
                                     </c:forEach>
                                 </select>
                             </td>
@@ -192,19 +199,19 @@ function cadMedico(){
                                 <label>CPF:</label>
                             </td>
                             <td>
-                                <input type="text" id="cpf" name="cpf" size="20" placeholder="___.___.___-__"/>
+                                <input type="text" id="cpf" name="cpf" size="20" placeholder="___.___.___-__" value="${medico.cpf}" />
                             </td>
                             <td>
                                 <label>RG:</label>
                             </td>
                             <td>
-                                <input type="text" id="rg" name="rg" size="20" placeholder="__.___.___-_"/>
+                                <input type="text" id="rg" name="rg" size="20" placeholder="__.___.___-_" value="${medico.rg}" />
                             </td>
                             <td>
                                 <label>CRM:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="crm" name="crm" size="20" placeholder="Digite a CRM"/>
+                                <input type="text" id="crm" name="crm" size="20" placeholder="Digite a CRM" value="${medico.crm}" />
                             </td>
                         </tr>
                         <tr>
@@ -217,7 +224,7 @@ function cadMedico(){
                                 <label>Endereço:</label>
                             </td>
                             <td colspan="7"> 
-                                <input type="text" id="nomeEndereco" name="nomeEndereco" placeholder="Digite aqui o endereço do Médico" size="140" />
+                                <input type="text" id="nomeEndereco" name="nomeEndereco" placeholder="Digite aqui o endereço do Médico" size="140" value="${medico.endereco.nomeEndereco}" />
                             </td>
                         </tr>
                         <tr>
@@ -225,19 +232,19 @@ function cadMedico(){
                                 <label>Número:</label>
                             </td>
                             <td>
-                                <input type="text" id="numeroEndereco" name="numeroEndereco" placeholder="Número" size="20" />
+                                <input type="text" id="numeroEndereco" name="numeroEndereco" placeholder="Número" size="20" value="${medico.endereco.numero}" />
                             </td>
                             <td>
                                 <label>Complemento:</label>
                             </td>
                             <td>
-                                <input type="text" id="complemento" name="complemento" placeholder="Complemento" size="20" maxlength="30" />
+                                <input type="text" id="complemento" name="complemento" placeholder="Complemento" size="20" maxlength="30" value="${medico.endereco.complemento}" />
                             </td>
                             <td>
                                 <label>Bairro:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="bairro" name="bairro" placeholder="Digite o nome do Bairro" size="20" />
+                                <input type="text" id="bairro" name="bairro" placeholder="Digite o nome do Bairro" size="20" value="${medico.endereco.bairro}"  />
                             </td>
                         </tr>
                         <tr>
@@ -245,13 +252,13 @@ function cadMedico(){
                                 <label>Cidade:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="cidade" name="cidade" placeholder="Digite o nome da cidade" size="70" />
+                                <input type="text" id="cidade" name="cidade" placeholder="Digite o nome da cidade" size="70" value="${medico.endereco.cidade}" />
                             </td>
                             <td>
                                 <label>CEP:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="cep" name="cep" placeholder="_____-___" size="20" />
+                                <input type="text" id="cep" name="cep" placeholder="_____-___" size="20" value="${medico.endereco.cep}" />
                             </td>
                         </tr>
                         <tr>
@@ -264,19 +271,19 @@ function cadMedico(){
                                 <label>Tel. Residencial:</label>
                             </td>
                             <td>
-                                <input type="text" id="telefone" name="telefone" placeholder="(__)____-____" size="20" />
+                                <input type="text" id="telefone" name="telefone" placeholder="(__)____-____" size="20" value="${medico.contato.telefone}" />
                             </td>
                             <td>
                                 <label>Celular:</label>
                             </td>
                             <td>
-                                <input type="text" id="celular" name="celular" placeholder="(__)____-____" size="20" />
+                                <input type="text" id="celular" name="celular" placeholder="(__)____-____" size="20" value="${medico.contato.celular}" />
                             </td>
                             <td>
                                 <label>Email:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="email" name="email" placeholder="email@email.com" size="40" />
+                                <input type="text" id="email" name="email" placeholder="email@email.com" size="40" value="${medico.contato.email}" />
                             </td>
                         </tr>
                         
@@ -291,7 +298,7 @@ function cadMedico(){
                                 <label>Senha:</label>
                             </td>
                             <td colspan="7">
-                                <input type="password" id="senha" name="senha" placeholder="******" size="20" />
+                                <input type="password" id="senha" name="senha" placeholder="******" size="20" value="${medico.usuario.password}" />
                             </td>
                         </tr>
                         
@@ -300,20 +307,19 @@ function cadMedico(){
                                 <label>Repetir:</label>
                             </td>
                             <td colspan="7">
-                                <input type="password" id="repetirSenha" name="repetirSenha" placeholder="******" size="20" />
+                                <input type="password" id="repetirSenha" name="repetirSenha" placeholder="******" size="20" value="${medico.usuario.password}" />
                             </td>
                         </tr>
-                        <input type="hidden" name="tipoOperacao" value="cadMedico" id="operacao">
+                        <input type="hidden" name="tipoOperacao" value="editMedico2" id="operacao">
                     </table>
-                                </form>
-                        <button id="btnCad" onclick="cadMedico();">Salvar</button>
-                        
-                        
+                            </form>
+                            <button id="btnCad" onclick="editMedico();">Salvar</button>
             </div>
-                                <div id="dialog-message" title="Cadastro" hidden="true">
+                            </div>
+                                <div id="dialog-message" title="Edição" hidden="true">
                 <p>
                     <span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0;"></span>
-                        Cadastro Efetuado com Sucesso!!!
+                        Edição Efetuada com Sucesso!!!
                 </p>
               </div>
     </body>

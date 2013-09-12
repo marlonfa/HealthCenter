@@ -55,7 +55,7 @@ public class EnfermeiroControle{
     
     
     public void createOrSave(Object object){
-        this.enfermeiroDao.persist((Enfermeiro) object);
+        this.enfermeiroDao.saveOrUpdate((Enfermeiro) object);
     }
     
     

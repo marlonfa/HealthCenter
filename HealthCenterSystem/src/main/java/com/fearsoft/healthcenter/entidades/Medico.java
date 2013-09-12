@@ -4,10 +4,13 @@
  */
 package com.fearsoft.healthcenter.entidades;
 
+import com.fearsoft.healthcenter.enums.MedicoEspecialidade;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 /**
  *
@@ -24,8 +27,10 @@ public class Medico extends Pessoa implements Serializable {
     
     @Column(name = "crm", length = 20, nullable = false)
     private String crm;
+    
     @Column(name = "especialidade", length = 50, nullable = false)
-    private String especialidade;
+    @Enumerated(EnumType.STRING)
+    private MedicoEspecialidade especialidade;
 
     public String getCrm() {
         return crm;
@@ -35,11 +40,11 @@ public class Medico extends Pessoa implements Serializable {
         this.crm = crm;
     }
 
-    public String getEspecialidade() {
+    public MedicoEspecialidade getEspecialidade() {
         return especialidade;
     }
 
-    public void setEspecialidade(String especialidade) {
+    public void setEspecialidade(MedicoEspecialidade especialidade) {
         this.especialidade = especialidade;
     }
 
@@ -47,4 +52,6 @@ public class Medico extends Pessoa implements Serializable {
     public String toString() {
         return "Medico{" + "crm=" + crm + ", especialidade=" + especialidade + '}';
     }
+    
+    
 }

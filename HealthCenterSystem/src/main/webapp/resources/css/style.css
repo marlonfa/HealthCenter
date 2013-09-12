@@ -204,3 +204,8 @@ label.error{
 input.error {
 	border: 1px solid red;
 }
+
+#loader{
+    margin-left: 40%;
+    margin-top: 20%;
+}

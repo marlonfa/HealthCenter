@@ -54,7 +54,7 @@ public class PacienteControle{
     
     
     public void createOrSave(Object object){
-        this.pacienteDao.persist((Paciente) object);
+        this.pacienteDao.saveOrUpdate((Paciente) object);
     }
     
     

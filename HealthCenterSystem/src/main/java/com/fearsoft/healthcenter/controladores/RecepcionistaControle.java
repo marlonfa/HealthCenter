@@ -55,7 +55,7 @@ public class RecepcionistaControle{
     
     
     public void createOrSave(Object object){
-        this.recepcionistaDao.persist((Recepcionista) object);
+        this.recepcionistaDao.saveOrUpdate((Recepcionista) object);
     }
     
     

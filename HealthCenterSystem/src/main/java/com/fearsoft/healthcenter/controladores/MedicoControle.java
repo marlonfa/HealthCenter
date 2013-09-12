@@ -18,8 +18,8 @@ public class MedicoControle{
     private MedicoDao medicoDao;
     
     public MedicoControle(){
-        this.medico = new Medico();
         this.medicoDao = new MedicoDao();
+        this.medico = new Medico();
     }
     
     public Medico getMedico() {
@@ -30,15 +30,6 @@ public class MedicoControle{
         this.medico = medico;
     }
 
-    public MedicoDao getMedicoDao() {
-        return medicoDao;
-    }
-
-    public void setMedicoDao(MedicoDao medicoDao) {
-        this.medicoDao = medicoDao;
-    }
-    
-    
     public Object find(Object id){
         return this.medicoDao.find(id);
     }
@@ -54,8 +45,8 @@ public class MedicoControle{
     }
     
     
-    public void createOrSave(Object object){
-        this.medicoDao.persist((Medico) object);
+    public void saveOrUpdate(Object object){
+        this.medicoDao.saveOrUpdate((Medico) object);
     }
     
     

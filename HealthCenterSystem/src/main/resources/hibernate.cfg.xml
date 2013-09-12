@@ -19,6 +19,9 @@
         <mapping class="com.fearsoft.healthcenter.entidades.Medico"/>
         <mapping class="com.fearsoft.healthcenter.entidades.Paciente"/>
         <mapping class="com.fearsoft.healthcenter.entidades.Pessoa"/>
+        <mapping class="com.fearsoft.healthcenter.entidades.Administrador"/>
+        <mapping class="com.fearsoft.healthcenter.entidades.Recepcionista"/>
+        <mapping class="com.fearsoft.healthcenter.entidades.Usuario"/>
         
         <!--
         <mapping class="com.fearsoft.healthcenter.entidades.Recepcionista"/>

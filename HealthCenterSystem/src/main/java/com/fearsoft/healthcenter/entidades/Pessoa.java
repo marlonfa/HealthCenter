@@ -77,9 +77,6 @@ public abstract class Pessoa implements Serializable{
     @Column(name = "estado_civil", length = 20, nullable = false)
     private EstadoCivil estadoCivil;
     
-    @Column(name = "senha", length = 6)
-    private String senha;
-
     @JoinColumn(name = "contato")
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Contato contato;
@@ -87,6 +84,10 @@ public abstract class Pessoa implements Serializable{
     @JoinColumn(name = "endereco")
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Endereco endereco;
+    
+    @JoinColumn(name = "users")
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Usuario usuario;
     
     public Long getId() {
         return id;
@@ -152,14 +153,6 @@ public abstract class Pessoa implements Serializable{
         this.estadoCivil = estadoCivil;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
     public Contato getContato() {
         return contato;
     }
@@ -176,9 +169,16 @@ public abstract class Pessoa implements Serializable{
         this.endereco = endereco;
     }
 
-    @Override
-    public String toString() {
-        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", naturalidade=" + naturalidade + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", cpf=" + cpf + ", rg=" + rg + ", estadoCivil=" + estadoCivil + ", senha=" + senha + ", contato=" + contato + ", endereco=" + endereco + '}';
+    public Usuario getUsuario() {
+        return usuario;
     }
 
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" + "id=" + id + ", nome=" + nome + ", naturalidade=" + naturalidade + ", dataNascimento=" + dataNascimento + ", sexo=" + sexo + ", cpf=" + cpf + ", rg=" + rg + ", estadoCivil=" + estadoCivil + ", contato=" + contato + ", endereco=" + endereco + ", usuario=" + usuario + '}';
+    }
 }

@@ -25,8 +25,8 @@ public class Endereco implements Serializable {
     @Column(name = "id")
     private Long id;
     
-    @Column(name = "nome_endereco", length = 60, nullable = false)
-    private String nomeEndereço;
+    @Column(name = "nomeEndereco", length = 60, nullable = false)
+    private String nomeEndereco;
     
     @Column(length = 30)
     private String bairro;
@@ -51,12 +51,12 @@ public class Endereco implements Serializable {
         this.id = id;
     }
 
-    public String getNomeEndereço() {
-        return nomeEndereço;
+    public String getNomeEndereco() {
+        return nomeEndereco;
     }
 
-    public void setNomeEndereço(String nomeEndereço) {
-        this.nomeEndereço = nomeEndereço;
+    public void setNomeEndereco(String nomeEndereco) {
+        this.nomeEndereco = nomeEndereco;
     }
 
     public String getBairro() {
@@ -101,6 +101,6 @@ public class Endereco implements Serializable {
 
     @Override
     public String toString() {
-        return "Endereco{" + "id=" + id + ", nomeEndere\u00e7o=" + nomeEndereço + ", bairro=" + bairro + ", numero=" + numero + ", complemento=" + complemento + ", cep=" + cep + ", cidade=" + cidade + '}';
+        return "Endereco{" + "id=" + id + ", nomeEndereco=" + nomeEndereco + ", bairro=" + bairro + ", numero=" + numero + ", complemento=" + complemento + ", cep=" + cep + ", cidade=" + cidade + '}';
     }
 }

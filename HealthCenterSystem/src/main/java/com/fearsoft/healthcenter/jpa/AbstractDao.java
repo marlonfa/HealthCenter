@@ -19,7 +19,7 @@ public abstract class AbstractDao<T> {
         this.entityClass = entityClass;
     }
     
-    public void persist(T object) {
+    public void saveOrUpdate(T object) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         if(session.beginTransaction() == null){
             session.beginTransaction();

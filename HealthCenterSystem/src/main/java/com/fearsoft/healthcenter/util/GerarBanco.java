@@ -41,7 +41,7 @@ public class GerarBanco {
         e.setCidade("Fenix");
         e.setComplemento("Perto do Cemiterio");
         e.setNumero(243);
-        e.setNomeEndereço("Rua rui barbosa");
+        e.setNomeEndereco("Rua rui barbosa");
         
         m.setNome("eder");
         m.setNaturalidade("brasileira");
@@ -50,13 +50,11 @@ public class GerarBanco {
         m.setCpf("12345678901");
         m.setRg("1234567");
         m.setEstadoCivil(EstadoCivil.SOLTEIRO);
-        m.setSenha("123");
         m.setContato(c);
         m.setEndereco(e);
         m.setCrm("12345");
-        m.setEspecialidade("Cirurgiao geral");
         
-        dao.persist(m);
+        dao.saveOrUpdate(m);
     }
     
 }

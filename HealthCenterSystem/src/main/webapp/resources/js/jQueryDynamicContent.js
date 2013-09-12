@@ -12,7 +12,7 @@ $(document).ready(function() {
     abre(pega_arq(document.location.href), content);
 });
 function abre(href, content) {
-    content.html('<img src="../imagens/ajax-loader.gif" />');
+    content.html('<img id="loader" src="../imagens/ajax-loader.gif" />');
 
     $.ajax({
         url: href,
@@ -25,3 +25,4 @@ function pega_arq(url) {
     var file = url.split('#');
     return (file[1]) ? file[1] + '.jsp' : 'welcome.jsp';
 }
+
