@@ -1,9 +1,9 @@
 <div id="nav">
 
-        <ul>
+    <ul id="menu">
             <li id="itemMenu">Realizar</li>
             
-            <li><a href="javascript:open('../medico/realizarConsulta.jsp')">Consulta</a></li>
+            <li><a href="#realizarConsulta">Consulta</a></li>
         </ul>
 
  </div>

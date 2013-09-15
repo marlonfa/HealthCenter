@@ -17,8 +17,8 @@ public class PacienteControle{
     private PacienteDao pacienteDao;
     
     public PacienteControle(){
-        this.paciente = new Paciente();
         this.pacienteDao = new PacienteDao();
+        this.paciente = new Paciente();
     }
     
     public Paciente getPaciente() {
@@ -53,7 +53,7 @@ public class PacienteControle{
     }
     
     
-    public void createOrSave(Object object){
+    public void saveOrUpdate(Object object){
         this.pacienteDao.saveOrUpdate((Paciente) object);
     }
     

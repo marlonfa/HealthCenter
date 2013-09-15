@@ -18,8 +18,8 @@ public class EnfermeiroControle{
     private EnfermeiroDao enfermeiroDao;
     
     public EnfermeiroControle(){
-        this.enfermeiro = new Enfermeiro();
         this.enfermeiroDao = new EnfermeiroDao();
+        this.enfermeiro = new Enfermeiro();
     }
     
     public Enfermeiro getEnfermeiro() {
@@ -54,7 +54,7 @@ public class EnfermeiroControle{
     }
     
     
-    public void createOrSave(Object object){
+    public void saveOrUpdate(Object object){
         this.enfermeiroDao.saveOrUpdate((Enfermeiro) object);
     }
     

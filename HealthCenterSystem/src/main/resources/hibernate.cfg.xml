@@ -22,10 +22,8 @@
         <mapping class="com.fearsoft.healthcenter.entidades.Administrador"/>
         <mapping class="com.fearsoft.healthcenter.entidades.Recepcionista"/>
         <mapping class="com.fearsoft.healthcenter.entidades.Usuario"/>
-        
-        <!--
-        <mapping class="com.fearsoft.healthcenter.entidades.Recepcionista"/>
-        -->
-        
+        <mapping class="com.fearsoft.healthcenter.entidades.Consulta"/>
+        <mapping class="com.fearsoft.healthcenter.entidades.Triagem"/>
+        <mapping class="com.fearsoft.healthcenter.entidades.HistoricoClinico"/>
     </session-factory>
 </hibernate-configuration>

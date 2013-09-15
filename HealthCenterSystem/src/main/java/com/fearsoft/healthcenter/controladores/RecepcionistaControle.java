@@ -18,8 +18,8 @@ public class RecepcionistaControle{
     private RecepcionistaDao recepcionistaDao;
     
     public RecepcionistaControle(){
-        this.recepcionista = new Recepcionista();
         this.recepcionistaDao = new RecepcionistaDao();
+        this.recepcionista = new Recepcionista();
     }
     
     public Recepcionista getRecepcionista() {
@@ -30,15 +30,6 @@ public class RecepcionistaControle{
         this.recepcionista = recepcionista;
     }
 
-    public RecepcionistaDao getRecepcionistaDao() {
-        return recepcionistaDao;
-    }
-
-    public void setRecepcionistaDao(RecepcionistaDao recepcionistaDao) {
-        this.recepcionistaDao = recepcionistaDao;
-    }
-    
-    
     public Object find(Object id){
         return this.recepcionistaDao.find(id);
     }
@@ -54,7 +45,7 @@ public class RecepcionistaControle{
     }
     
     
-    public void createOrSave(Object object){
+    public void saveOrUpdate(Object object){
         this.recepcionistaDao.saveOrUpdate((Recepcionista) object);
     }
     

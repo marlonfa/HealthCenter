@@ -4,16 +4,16 @@
 <html>
     <head>
         <script>
-            function edit(medicoId){
+            function edit(recepcionistaId){
             $.ajax({
-                url: "MedicoServlet",  
+                url: "RecepcionistaServlet",  
                 type: "POST",
-                data: 'id='+ medicoId +'&tipoOperacao='+ 'editMedico'
+                data: 'id='+ recepcionistaId +'&tipoOperacao='+ 'editRecepcionista'
             }); 
             loading = new Image();
             loading.src = '../imagens/ajax-loader.gif';
             $('#div_content').html('<img id="loader" src="../imagens/ajax-loader.gif" />');
-            $('#div_content').load('editMedico.jsp').delay(250).hide().fadeIn();
+            $('#div_content').load('editRecepcionista.jsp').delay(250).hide().fadeIn();
             parent.$.fn.colorbox.close();
         };
         
@@ -37,7 +37,7 @@
                                 <label>Nome:</label>
                             </td>
                             <td colspan="7"> 
-                                ${medico.nome}
+                                ${recepcionista.nome}
                                 
                             </td>
                         </tr>
@@ -46,25 +46,19 @@
                                 <label>Naturalidade:</label>
                             </td>
                             <td>
-                                ${medico.naturalidade}
-                            </td>
-                            <td>
-                                <label>Especialidade:</label>
-                            </td>
-                            <td>
-                                ${medico.especialidade}
+                                ${recepcionista.naturalidade}
                             </td>
                             <td>
                                 <label>Data Nasc.:</label>
                             </td>
                             <td>
-                                ${medico.dataNascimento}
+                                ${recepcionista.dataNascimento}
                             </td>
                             <td>
                                 <label>Sexo:</label>
                             </td>
                             <td>
-                                ${medico.sexo}
+                                ${recepcionista.sexo}
                             </td>
                         </tr>
                         <tr>
@@ -72,19 +66,13 @@
                                 <label>CPF:</label>
                             </td>
                             <td>
-                                ${medico.cpf}
+                                ${recepcionista.cpf}
                             </td>
                             <td>
                                 <label>RG:</label>
                             </td>
                             <td>
-                                ${medico.rg}
-                            </td>
-                            <td>
-                                <label>CRM:</label>
-                            </td>
-                            <td colspan="3">
-                                ${medico.crm}
+                                ${recepcionista.rg}
                             </td>
                         </tr>
                         <tr>
@@ -97,7 +85,7 @@
                                 <label>Endereço:</label>
                             </td>
                             <td colspan="7"> 
-                                ${medico.endereco.nomeEndereco}
+                                ${recepcionista.endereco.nomeEndereco}
                             </td>
                         </tr>
                         <tr>
@@ -105,19 +93,19 @@
                                 <label>Número:</label>
                             </td>
                             <td>
-                                ${medico.endereco.numero}
+                                ${recepcionista.endereco.numero}
                             </td>
                             <td>
                                 <label>Complemento:</label>
                             </td>
                             <td>
-                                ${medico.endereco.complemento}
+                                ${recepcionista.endereco.complemento}
                             </td>
                             <td>
                                 <label>Bairro:</label>
                             </td>
                             <td colspan="3">
-                                ${medico.endereco.bairro}
+                                ${recepcionista.endereco.bairro}
                             </td>
                         </tr>
                         <tr>
@@ -125,13 +113,13 @@
                                 <label>Cidade:</label>
                             </td>
                             <td colspan="3">
-                                ${medico.endereco.cidade}
+                                ${recepcionista.endereco.cidade}
                             </td>
                             <td>
                                 <label>CEP:</label>
                             </td>
                             <td colspan="3">
-                                ${medico.endereco.cep}
+                                ${recepcionista.endereco.cep}
                             </td>
                         </tr>
                         <tr>
@@ -144,24 +132,24 @@
                                 <label>Tel. Residencial:</label>
                             </td>
                             <td>
-                                ${medico.contato.telefone}
+                                ${recepcionista.contato.telefone}
                             </td>
                             <td>
                                 <label>Celular:</label>
                             </td>
                             <td>
-                                ${medico.contato.celular}
+                                ${recepcionista.contato.celular}
                             </td>
                             <td>
                                 <label>Email:</label>
                             </td>
                             <td colspan="3">
-                                ${medico.contato.email}
+                                ${recepcionista.contato.email}
                             </td>
                         </tr>
                     </table>
                     <button type="button" onclick="fechar();">Fechar</button>
-                    <button id="edit" onclick="edit(${medico.id});">Editar</button>
+                    <button id="edit" onclick="edit(${recepcionista.id});">Editar</button>
             </div>
     </body>
 </html>

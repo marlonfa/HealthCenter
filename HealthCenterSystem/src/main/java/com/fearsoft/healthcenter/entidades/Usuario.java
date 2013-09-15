@@ -7,7 +7,6 @@ package com.fearsoft.healthcenter.entidades;
 import com.fearsoft.healthcenter.enums.Authority;
 import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,11 +20,11 @@ import javax.persistence.Table;
  * @author marlon
  */
 @Entity
-@Table(name = "usuario")
-@DiscriminatorValue("users")
+@Table(name = "users")
 public class Usuario implements Serializable{
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private long id;
     

@@ -10,19 +10,15 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -30,26 +26,11 @@ import javax.persistence.TemporalType;
  *
  * @author marlon
  */
-@Entity
-@Table(name = "pessoa")
-
-/*
- * A anotação @Inheritance estabelece a estratégia a ser empregada.
- * Neste caso, uma única tabela será empregada para 
- * registrar toda e qualquer instância derivada de Pessoa
- */
-@Inheritance(strategy = InheritanceType.JOINED)
-/*
- * A anotação @Discrimnator estabelece como será feita a distinção
- * entre registros armazenados nesta única tabela de tal forma que seja
- * possível estabelecer quais campos foram empregados (um subconjunto
- * dos campos para cada subclasse).
- */
-@DiscriminatorColumn(name = "tipo")
+@MappedSuperclass
 public abstract class Pessoa implements Serializable{
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
     

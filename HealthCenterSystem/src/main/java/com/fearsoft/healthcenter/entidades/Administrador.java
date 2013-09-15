@@ -6,18 +6,18 @@ package com.fearsoft.healthcenter.entidades;
 
 import java.io.Serializable;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
  * @author marlon
  */
 @Entity
-@DiscriminatorValue("administrador")
+@Table(name = "administrador")
 public class Administrador extends Pessoa implements Serializable{
     
-    @Column(name = "caargo", length = 100, nullable = false)
+    @Column(name = "cargo", length = 100, nullable = false)
     private String cargo;
 
     public String getCargo() {

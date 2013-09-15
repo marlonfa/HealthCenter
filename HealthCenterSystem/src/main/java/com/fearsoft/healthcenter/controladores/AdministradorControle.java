@@ -12,12 +12,13 @@ import java.util.List;
  *
  * @author marlon
  */
-public class AdministradorControle implements InterfaceControle<Administrador>{
+public class AdministradorControle {
     private Administrador administrador;
     private AdministradorDao administradorDao;
 
     public AdministradorControle(){
         administradorDao = new AdministradorDao();
+        administrador = new Administrador();
     }
     
     public Administrador getAdministrador() {
@@ -28,27 +29,22 @@ public class AdministradorControle implements InterfaceControle<Administrador>{
         this.administrador = administrador;
     }
 
-    @Override
     public Object find(Administrador id) {
         return this.administradorDao.find(id);
     }
 
-    @Override
     public List findAll() {
         return this.administradorDao.findAll();
     }
 
-    @Override
     public List findFilter(String parametro, Administrador valor) {
         return this.administradorDao.findFilter(parametro, valor);
     }
 
-    @Override
-    public void createOrSave(Administrador object) {
+    public void saveOrUpdate(Administrador object) {
         this.administradorDao.saveOrUpdate(object);
     }
 
-    @Override
     public void delete(Administrador object) {
         this.administradorDao.delete(object);
     }

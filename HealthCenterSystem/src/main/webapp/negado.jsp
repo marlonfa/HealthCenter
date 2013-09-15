@@ -9,9 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link href="resources/css/style.css" rel="stylesheet" type="text/css">
+        <title>Acesso Negado</title>
     </head>
     <body>
-        <h1>VOCÊ É UM IDIOTA, NÃO PODE ACESSAR ISSO!!!</h1>
+        <h1>Acesso Negado!!!</h1>
+        <img src="imagens/stop.png" alt="acessoNegado" />
     </body>
 </html>

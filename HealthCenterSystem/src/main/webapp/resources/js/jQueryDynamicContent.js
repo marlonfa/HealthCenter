@@ -8,6 +8,7 @@ $(document).ready(function() {
         var arq = pega_arq($(this).attr('href'));
         abre(arq, content);
     });
+    
     /* iniciando com a home */
     abre(pega_arq(document.location.href), content);
 });

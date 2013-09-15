@@ -17,23 +17,23 @@
         <link href="../resources/css/colorbox.css" rel="stylesheet" type="text/css" />
         <link href="../resources/css/jquery-ui.css" rel="stylesheet" type="text/css" />
         
-        <!--<script type="text/javascript" src="../resources/js/script.js"></script>-->
         <script type="text/javascript" src="../resources/js/jquery.min.js"></script>
         <script type="text/javascript" src="../resources/js/jquery.dataTables.min.js"></script>
-        <script type="text/javascript" src="../resources/js/jquery.jeditable.js"></script>
+        <!--<script type="text/javascript" src="../resources/js/jquery.jeditable.js"></script>-->
         <script type="text/javascript" src="../resources/js/jquery-ui.js"></script>
         <script type="text/javascript" src="../resources/js/jQueryValidate.js"></script>
-        <script type="text/javascript" src="../resources/js/jquery.dataTables.editable.js"></script>
+        <!--<script type="text/javascript" src="../resources/js/jquery.dataTables.editable.js"></script>-->
         <script type="text/javascript" src="../resources/js/jquery.colorbox-min.js"></script>
+        <!--<script type="text/javascript" src="../resources/js/fnReloadAjax.js"></script>-->
         
                 
 <script type="text/javascript">
+    var oTable;
             $(document).ready( function () {
-                $('#tabela').dataTable( {
+              oTable  = $('#tabela').dataTable( {
                         "bScrollCollapse": true,
                         "bPaginate": true,
                         "bJQueryUI": true
-                        
                 });
         } );
         
@@ -47,19 +47,16 @@
                     $.ajax({
                         url: "MedicoServlet",  
                         type: "POST",
-                        data: 'id='+ medicoId +'&tipoOperacao='+ 'removeMedico'
+                        data: 'id='+ medicoId +'&tipoOperacao='+ 'removeMedico',
+                        complete: refreshTable
                     });
                      $( this ).dialog( "close" );
-                     location.reload();
                   },
                   "Cancelar": function() {
                     $( this ).dialog( "close" );
                   }
                 }
             });
-            
-            
-            
         };
         
         function edit(medicoId){
@@ -67,26 +64,34 @@
                 url: "MedicoServlet",  
                 type: "POST",
                 data: 'id='+ medicoId +'&tipoOperacao='+ 'editMedico'
+//                complete: callEdit
             }); 
-            $.colorbox({ 
-            href: "editMedico.jsp",
-                    overlayClose: false 
-            });
+            callEdit();           
         };
         
         function view(medicoId){
             $.ajax({
                 url: "MedicoServlet",  
                 type: "POST",
-                data: 'id='+ medicoId +'&tipoOperacao='+ 'viewMedico'
+                data: 'id='+ medicoId +'&tipoOperacao='+ 'viewMedico',
+                complete: callView 
             }); 
-            $.colorbox({ 
-            href: "viewMedico.jsp",
-                    overlayClose: false 
-            });
+            
         };
+        function callView(){
+            $.colorbox({ 
+                href: "viewMedico.jsp",
+                overlayClose: false 
+            });
+        }
         
+        function callEdit(){
+            $('#div_content').load('editMedico.jsp').delay(250).hide().fadeIn();
+        }
         
+        function refreshTable(){
+            location.reload();
+        }
 </script>
     </head>
     <body>
@@ -122,8 +127,8 @@
 			<td >${medico.cpf}</td>
 			<td >${medico.crm}</td>
 			<td >${medico.especialidade}</td>
-                        <td id="remove" ><button id="edit" onclick="view(${medico.id});">Visualizar</button></td>
-                        <td id="remove" ><button id="edit" onclick="edit(${medico.id});">Editar</button></td>
+                        <td id="remove" ><button id="view" onclick="view(${medico.id});">Visualizar</button></td>
+                        <td id="remove" ><button id="edit" class="edit" onclick="edit(${medico.id});" abrir="#editMedico">Editar</button></td>
                         <td id="remove" ><button id="removeMedico" onclick="removeMedico(${medico.id});">Remover</button></td>
 		</tr>
                 </c:forEach>

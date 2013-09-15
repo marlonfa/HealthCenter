@@ -25,22 +25,22 @@ public class Endereco implements Serializable {
     @Column(name = "id")
     private Long id;
     
-    @Column(name = "nomeEndereco", length = 60, nullable = false)
+    @Column(name = "nome_endereco", length = 60, nullable = false)
     private String nomeEndereco;
     
-    @Column(length = 30)
+    @Column(name = "bairro", length = 30)
     private String bairro;
     
-    @Column(length = 6)
+    @Column(name = "numero", length = 6)
     private int numero;
     
-    @Column(length = 30)
+    @Column(name = "complemento", length = 30)
     private String complemento;
     
-    @Column(length = 8, nullable = false)
+    @Column(name = "cep", length = 8, nullable = false)
     private String cep;
     
-    @Column(length = 50, nullable = false)
+    @Column(name = "cidade", length = 50, nullable = false)
     private String cidade;
 
     public Long getId() {

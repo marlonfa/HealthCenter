@@ -1,14 +1,14 @@
 <div id="nav">
 
-        <ul>
+    <ul id="menu">
             <li id="itemMenu">Cadastro</li>
             
-            <li><a href="javascript:open('../recepcionista/cadPaciente.jsp')">Paciente</a></li>
+            <li><a href="#cadPaciente">Administrador</a></li>
             <li id="itemMenu">Pesquisa</li>
-            <li><a href="javascript:open('../recepcionista/pesqPaciente.jsp')">Paciente</a></li>
+            <li><a href="#pesqPaciente">Administrador</a></li>
             <li id="itemMenu">Solicitar</li>
-            <li><a href="javascript:open('../recepcionista/solicitarTriagem.jsp')">Triagem</a></li>
+            <li><a href="#solicitarTriagem">Triagem</a></li>
         </ul>
 
  </div>
-         
+                  

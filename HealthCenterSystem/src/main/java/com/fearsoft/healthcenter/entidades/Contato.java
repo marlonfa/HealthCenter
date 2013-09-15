@@ -25,13 +25,13 @@ public class Contato implements Serializable{
     @Column(name = "id")
     private Long id;
     
-    @Column(length = 10)
+    @Column(name = "telefone", length = 10)
     private String telefone;
     
-    @Column(length = 11)
+    @Column(name = "celular", length = 11)
     private String celular;
     
-    @Column(length = 40, unique = true)
+    @Column(name = "email", length = 40, unique = true)
     private String email;
 
     public Long getId() {

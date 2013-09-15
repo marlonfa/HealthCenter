@@ -1,10 +1,9 @@
 <%-- 
-    Document   : cadAdministrador
+    Document   : cadAdministradaor
     Created on : 21/08/2013, 15:16:29
     Author     : marlon
 --%>
 
-<%@page import="com.fearsoft.healthcenter.controladores.AdministradorControle"%>
 <%@page import="com.fearsoft.healthcenter.enums.EstadoCivil"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
@@ -12,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="../resources/css/style.css" rel="stylesheet" type="text/css" />
+       <link href="../resources/css/style.css" rel="stylesheet" type="text/css" />
          <link href="../resources/css/jquery-ui.css" rel="stylesheet" type="text/css" />
          
          <script type="text/javascript" src="../resources/js/jquery.min.js"></script>
@@ -29,7 +28,7 @@
     
     $.validator.setDefaults({
   submitHandler: function() { 
-      cadAdministrador();
+      cadAdministradaor();
         }
 }); 
     
@@ -99,9 +98,9 @@
          $("#form").validate();
     });
  
-function cadAdministrador(){
+function cadAdministradaor(){
             $.ajax({
-            url: "AdministradorServlet",  
+            url: "AdministradaorServlet",  
             type: "POST",  
             data: 'nome='+ $('#nome').val() +'&naturalidade='+ $('#naturalidade').val()  + 
                   '&dataNascimento='+ $('#dataNascimento').val() +'&sexo='+ $('#sexo').val() +'&estadoCivil='+ $('#estadoCivil').val() + 
@@ -126,7 +125,7 @@ $("#dialog-message" ).dialog({
 } 
 function callView(){
             $.colorbox({ 
-                href: "viewAdministrador.jsp",
+                href: "viewAdministradaor.jsp",
                 overlayClose: false 
             });
         }
@@ -134,11 +133,11 @@ function callView(){
         <title>Health Center - Cadastro de Administrador</title>
     </head>
     <body>
-        <h1>Cadastro de Administrador</h1>
+        <h1>Edição de Administrador</h1>
            <div id="div_mensagens" ></div>
         <div id="content">
-                
             <form id="form">
+              
                     <table>
                         <tr>
                             <td colspan="8">
@@ -150,7 +149,7 @@ function callView(){
                                 <label>Nome:</label>
                             </td>
                             <td colspan="7"> 
-                                <input type="text" id="nome" name="nome" placeholder="Digite aqui o nome do Administrador" size="150" />
+                                <input type="text" id="nome" name="nome" placeholder="Digite aqui o nome do Administrador" size="150" value="${administradaor.nome}" />
                             </td>
                         </tr>
                         <tr>
@@ -158,26 +157,20 @@ function callView(){
                                 <label>Naturalidade:</label>
                             </td>
                             <td>
-                                <input type="text" id="naturalidade" name="naturalidade" size="20" placeholder="Digite a naturalidade"/>
-                            </td>
-                            <td>
-                                <label>Cargo</label>
-                            </td>
-                            <td>
-                                <input type="text" id="cargo" name="cargo" size="20" placeholder="Digite o cargo"/>
+                                <input type="text" id="naturalidade" name="naturalidade" size="20" placeholder="Digite a naturalidade" value="${administradaor.naturalidade}" />
                             </td>
                             <td>
                                 <label>Data Nasc.:</label>
                             </td>
                             <td>
-                                <input type="text" id="dataNascimento" name="dataNascimento" size="20" placeholder="__/__/____"/>
+                                <input type="text" id="dataNascimento" name="dataNascimento" size="20" placeholder="__/__/____" value="${administradaor.dataNascimento}" />
                             </td>
                             <td>
                                 <label>Sexo:</label>
                             </td>
                             <td>
-                                <input type="radio" name="sexo" value="Masculino" checked="">Masc.
-                                <input type="radio" name="sexo" value="Feminino">Fem.
+                                <input type="radio" name="sex" value="masculino" checked="">Masc.
+                                <input type="radio" name="sex" value="feminino">Fem.
                             </td>
                         </tr>
                         <tr>
@@ -187,6 +180,7 @@ function callView(){
                             <td>
                                 <c:set var="estadoCivilValues" value="<%=EstadoCivil.values()%>"/>
                                 <select id="estadoCivil" name="estadoCivil">
+                                    <option value="${administradaor.estadoCivil}">${administradaor.estadoCivil}</option>
                                     <c:forEach items="${estadoCivilValues}" var="estadoCivil">
                                         <option value="${estadoCivil}" >${estadoCivil.getEstadoCivil()}</option>
                                     </c:forEach>
@@ -196,13 +190,19 @@ function callView(){
                                 <label>CPF:</label>
                             </td>
                             <td>
-                                <input type="text" id="cpf" name="cpf" size="20" placeholder="___.___.___-__"/>
+                                <input type="text" id="cpf" name="cpf" size="20" placeholder="___.___.___-__" value="${administradaor.cpf}" />
                             </td>
                             <td>
                                 <label>RG:</label>
                             </td>
                             <td>
-                                <input type="text" id="rg" name="rg" size="20" placeholder="__.___.___-_"/>
+                                <input type="text" id="rg" name="rg" size="20" placeholder="__.___.___-_" value="${administradaor.rg}" />
+                            </td>
+                            <td>
+                                <label>Cargo:</label>
+                            </td>
+                            <td colspan="3">
+                                <input type="text" id="cargo" name="cargo" size="20" placeholder="Digite a Cargo" value="${administradaor.cargo}" />
                             </td>
                         </tr>
                         <tr>
@@ -215,7 +215,7 @@ function callView(){
                                 <label>Endereço:</label>
                             </td>
                             <td colspan="7"> 
-                                <input type="text" id="nomeEndereco" name="nomeEndereco" placeholder="Digite aqui o endereço do Administrador" size="140" />
+                                <input type="text" id="nomeEndereco" name="nomeEndereco" placeholder="Digite aqui o endereço do Administrador" size="140" value="${administradaor.endereco.nomeEndereco}" />
                             </td>
                         </tr>
                         <tr>
@@ -223,19 +223,19 @@ function callView(){
                                 <label>Número:</label>
                             </td>
                             <td>
-                                <input type="text" id="numeroEndereco" name="numeroEndereco" placeholder="Número" size="20" />
+                                <input type="text" id="numeroEndereco" name="numeroEndereco" placeholder="Número" size="20" value="${administradaor.endereco.numero}" />
                             </td>
                             <td>
                                 <label>Complemento:</label>
                             </td>
                             <td>
-                                <input type="text" id="complemento" name="complemento" placeholder="Complemento" size="20" maxlength="30" />
+                                <input type="text" id="complemento" name="complemento" placeholder="Complemento" size="20" maxlength="30" value="${administradaor.endereco.complemento}" />
                             </td>
                             <td>
                                 <label>Bairro:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="bairro" name="bairro" placeholder="Digite o nome do Bairro" size="20" />
+                                <input type="text" id="bairro" name="bairro" placeholder="Digite o nome do Bairro" size="20" value="${administradaor.endereco.bairro}"  />
                             </td>
                         </tr>
                         <tr>
@@ -243,13 +243,13 @@ function callView(){
                                 <label>Cidade:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="cidade" name="cidade" placeholder="Digite o nome da cidade" size="70" />
+                                <input type="text" id="cidade" name="cidade" placeholder="Digite o nome da cidade" size="70" value="${administradaor.endereco.cidade}" />
                             </td>
                             <td>
                                 <label>CEP:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="cep" name="cep" placeholder="_____-___" size="20" />
+                                <input type="text" id="cep" name="cep" placeholder="_____-___" size="20" value="${administradaor.endereco.cep}" />
                             </td>
                         </tr>
                         <tr>
@@ -262,19 +262,19 @@ function callView(){
                                 <label>Tel. Residencial:</label>
                             </td>
                             <td>
-                                <input type="text" id="telefone" name="telefone" placeholder="(__)____-____" size="20" />
+                                <input type="text" id="telefone" name="telefone" placeholder="(__)____-____" size="20" value="${administradaor.contato.telefone}" />
                             </td>
                             <td>
                                 <label>Celular:</label>
                             </td>
                             <td>
-                                <input type="text" id="celular" name="celular" placeholder="(__)____-____" size="20" />
+                                <input type="text" id="celular" name="celular" placeholder="(__)____-____" size="20" value="${administradaor.contato.celular}" />
                             </td>
                             <td>
                                 <label>Email:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="email" name="email" placeholder="email@email.com" size="40" />
+                                <input type="text" id="email" name="email" placeholder="email@email.com" size="40" value="${administradaor.contato.email}" />
                             </td>
                         </tr>
                         
@@ -289,7 +289,7 @@ function callView(){
                                 <label>Senha:</label>
                             </td>
                             <td colspan="7">
-                                <input type="password" id="senha" name="senha" placeholder="******" size="20" />
+                                <input type="password" id="senha" name="senha" placeholder="******" size="20" value="${administradaor.usuario.password}" />
                             </td>
                         </tr>
                         
@@ -298,20 +298,20 @@ function callView(){
                                 <label>Repetir:</label>
                             </td>
                             <td colspan="7">
-                                <input type="password" id="repetirSenha" name="repetirSenha" placeholder="******" size="20" />
+                                <input type="password" id="repetirSenha" name="repetirSenha" placeholder="******" size="20" value="${administradaor.usuario.password}" />
                             </td>
                         </tr>
-                        <input type="hidden" name="tipoOperacao" value="cadAdministrador" id="operacao">
+                        <input type="hidden" name="tipoOperacao" value="editAdministradaor2" id="operacao">
                     </table>
-                                <input class="submit" type="submit" value="Salvar" >
-                                </form>
+                            <input class="submit" type="submit" value="Salvar" >
+                            </form>
             </div>
-                                <div id="dialog-message" title="Cadastro" hidden="true">
+                            </div>
+                                <div id="dialog-message" title="Edição" hidden="true">
                 <p>
                     <span class="ui-icon ui-icon-circle-check" style="float: left; margin: 0 7px 50px 0;"></span>
-                        Cadastro Efetuado com Sucesso!!!
+                        Edição Efetuada com Sucesso!!!
                 </p>
               </div>
-                                
     </body>
 </html>
