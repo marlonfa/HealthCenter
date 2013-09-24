@@ -5,6 +5,7 @@
 package com.fearsoft.healthcenter.entidades;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,26 +21,26 @@ import javax.persistence.Table;
  * @author marlon
  */
 @Entity
-@Table(name="consulta")
+@Table(name = "consulta")
 public class Consulta implements Serializable {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
     
-    @Column(name = "sintoma", nullable = false)
-    private String sintoma;
+    @Column(name = "sintomas", nullable = false)
+    private String sintomas;
     
     @Column(name = "diagnostico", nullable = false)
     private String diagnostico;
     
     @Column(name = "prescricao", nullable = false)
     private String prescricao;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="codigo_cliente", nullable = false)
-    private Paciente paciente;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "triagem_id")
+    private Triagem triagem;
 
     public Long getId() {
         return id;
@@ -49,12 +50,12 @@ public class Consulta implements Serializable {
         this.id = id;
     }
 
-    public String getSintoma() {
-        return sintoma;
+    public String getSintomas() {
+        return sintomas;
     }
 
-    public void setSintoma(String sintoma) {
-        this.sintoma = sintoma;
+    public void setSintomas(String sintomas) {
+        this.sintomas = sintomas;
     }
 
     public String getDiagnostico() {
@@ -73,12 +74,16 @@ public class Consulta implements Serializable {
         this.prescricao = prescricao;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+    public Triagem getTriagem() {
+        return triagem;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setTriagem(Triagem triagem) {
+        this.triagem = triagem;
     }
-    
+//
+//    @Override
+//    public String toString() {
+//        return "Consulta{" + "id=" + id + ", sintomas=" + sintomas + ", diagnostico=" + diagnostico + ", prescricao=" + prescricao + ", triagem=" + triagem + '}';
+//    }
 }

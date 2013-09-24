@@ -161,7 +161,7 @@ private EnfermeiroControle enfermeiroControle;
         enfermeiroControle.getEnfermeiro().getUsuario().setName(request.getParameter("nome"));
         enfermeiroControle.getEnfermeiro().getUsuario().setUsername(formatString(request.getParameter("cpf")));
         enfermeiroControle.getEnfermeiro().getUsuario().setPassword(request.getParameter("senha"));
-        enfermeiroControle.getEnfermeiro().getUsuario().setAuthority(Authority.ROLE_MED);
+        enfermeiroControle.getEnfermeiro().getUsuario().setAuthority(Authority.ROLE_ENF);
 
         
         enfermeiroControle.saveOrUpdate(enfermeiroControle.getEnfermeiro());

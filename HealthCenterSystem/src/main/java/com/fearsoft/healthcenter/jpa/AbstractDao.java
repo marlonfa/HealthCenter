@@ -7,6 +7,7 @@ package com.fearsoft.healthcenter.jpa;
 import com.fearsoft.healthcenter.util.HibernateUtil;
 import java.util.List;
 import org.hibernate.Session;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 /**
  *
@@ -58,9 +59,8 @@ public abstract class AbstractDao<T> {
             session.beginTransaction();
         }
         try{
-            session.beginTransaction();
             List lista = session.createCriteria(entityClass)
-                    .add(Restrictions.like(parametro, "%"+valor+"%")).list();
+                    .add(Restrictions.like(parametro, "%"+valor+"%")).addOrder(Order.asc(parametro)).list();
             session.getTransaction().commit();
             return lista;
         }        
@@ -75,11 +75,14 @@ public abstract class AbstractDao<T> {
     
     public T find(Object id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        try {
+        if(session.beginTransaction() == null){
             session.beginTransaction();
+        }
+        try {
             Object object = session.createCriteria(entityClass)
                     .add(Restrictions.eq("id", id)).list().get(0);
             session.getTransaction().commit();
+            return (T) object;
         } catch (Exception e) {
             System.out.println("Erro ao Buscar pelo ID");
             session.getTransaction().rollback();
@@ -91,9 +94,11 @@ public abstract class AbstractDao<T> {
         
     public List<T>findAll(){   	
         Session session = HibernateUtil.getSessionFactory().openSession();
+        if(session.beginTransaction() == null){
+            session.beginTransaction();
+        }
         List<T>list = null;
         try{
-            session.beginTransaction();
             list = session.createCriteria(entityClass).list();
             session.getTransaction().commit();            
         }catch(Exception e){

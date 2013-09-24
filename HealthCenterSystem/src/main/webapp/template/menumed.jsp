@@ -3,7 +3,7 @@
     <ul id="menu">
             <li id="itemMenu">Realizar</li>
             
-            <li><a href="#realizarConsulta">Consulta</a></li>
+            <li><a href="#filaConsulta">Consulta</a></li>
         </ul>
 
  </div>

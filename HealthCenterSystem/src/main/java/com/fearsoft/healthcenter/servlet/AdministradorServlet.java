@@ -135,6 +135,9 @@ public class AdministradorServlet extends HttpServlet {
         administradorControle.getAdministrador().setDataNascimento(data);
         
         String sexo = request.getParameter("sexo");
+        
+        System.out.println("\n\nTipo SEXO========"+ sexo+"\n");
+        
         if("Masculino".equals(sexo)){
             administradorControle.getAdministrador().setSexo(Sexo.MASCULINO);
         }else{
@@ -144,6 +147,7 @@ public class AdministradorServlet extends HttpServlet {
         administradorControle.getAdministrador().setEstadoCivil(Enum.valueOf(EstadoCivil.class, request.getParameter("estadoCivil")));
         administradorControle.getAdministrador().setCpf(formatString(request.getParameter("cpf")));
         administradorControle.getAdministrador().setRg(formatString(request.getParameter("rg")));
+        administradorControle.getAdministrador().setCargo(request.getParameter("cargo"));
         
         administradorControle.getAdministrador().getEndereco().setNomeEndereco(request.getParameter("nomeEndereco"));
         administradorControle.getAdministrador().getEndereco().setNumero(Integer.parseInt(request.getParameter("numeroEndereco")));

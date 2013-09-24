@@ -61,7 +61,7 @@
                     numeroEndereco: {required: true, minlength: 1, maxlength: 6, number: true},
                     //complemento: {required: false, minlngth: 3, maxlength: 30},
                     bairro: {required: true, minlength: 6, maxlength: 30},
-                    cidade: {required: true, minlength: 6, maxlength: 50},
+                    cidade: {required: true, minlength: 5, maxlength: 50},
                     cep: {required: true, minlength: 9, maxlength: 9},
                     //telefone:{required: false, minlength: 10, maxlength: 10},
                     calular:{notEqual: "#telefone"},

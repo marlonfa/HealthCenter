@@ -13,17 +13,20 @@
         <property name="current_session_context_class">thread</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
       
+        <mapping class="com.fearsoft.healthcenter.entidades.Pessoa"/>
+        <mapping class="com.fearsoft.healthcenter.entidades.Administrador"/>
         <mapping class="com.fearsoft.healthcenter.entidades.Contato"/>
         <mapping class="com.fearsoft.healthcenter.entidades.Endereco"/>
         <mapping class="com.fearsoft.healthcenter.entidades.Enfermeiro"/>
         <mapping class="com.fearsoft.healthcenter.entidades.Medico"/>
         <mapping class="com.fearsoft.healthcenter.entidades.Paciente"/>
-        <mapping class="com.fearsoft.healthcenter.entidades.Pessoa"/>
-        <mapping class="com.fearsoft.healthcenter.entidades.Administrador"/>
         <mapping class="com.fearsoft.healthcenter.entidades.Recepcionista"/>
         <mapping class="com.fearsoft.healthcenter.entidades.Usuario"/>
-        <mapping class="com.fearsoft.healthcenter.entidades.Consulta"/>
+        
         <mapping class="com.fearsoft.healthcenter.entidades.Triagem"/>
-        <mapping class="com.fearsoft.healthcenter.entidades.HistoricoClinico"/>
+        <mapping class="com.fearsoft.healthcenter.entidades.Consulta"/>
+        <mapping class="com.fearsoft.healthcenter.acoes.FilaTriagem"/>
+        <mapping class="com.fearsoft.healthcenter.acoes.FilaConsulta"/>
+        <mapping class="com.fearsoft.healthcenter.acoes.HistoricoClinico"/>
     </session-factory>
 </hibernate-configuration>

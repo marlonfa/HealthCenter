@@ -29,15 +29,6 @@ public class PacienteControle{
         this.paciente = paciente;
     }
 
-    public PacienteDao getPacienteDao() {
-        return pacienteDao;
-    }
-
-    public void setPacienteDao(PacienteDao pacienteDao) {
-        this.pacienteDao = pacienteDao;
-    }
-    
-    
     public Object find(Object id){
         return this.pacienteDao.find(id);
     }

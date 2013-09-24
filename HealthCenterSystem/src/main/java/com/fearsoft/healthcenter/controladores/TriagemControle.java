@@ -13,14 +13,15 @@ import java.util.List;
  * @author marlon
  */
 public class TriagemControle {
+    
     private Triagem triagem;
     private TriagemDao triagemDao;
 
     public TriagemControle(){
-        triagemDao = new TriagemDao();
-        triagem = new Triagem();
+        this.triagem = new Triagem();
+        this.triagemDao = new TriagemDao();
     }
-    
+
     public Triagem getTriagem() {
         return triagem;
     }
@@ -28,8 +29,8 @@ public class TriagemControle {
     public void setTriagem(Triagem triagem) {
         this.triagem = triagem;
     }
-
-    public Object find(Triagem id) {
+    
+    public Object find(Object id) {
         return this.triagemDao.find(id);
     }
 
@@ -37,17 +38,15 @@ public class TriagemControle {
         return this.triagemDao.findAll();
     }
 
-    public List findFilter(String parametro, Triagem valor) {
+    public List findFilter(String parametro, Object valor) {
         return this.triagemDao.findFilter(parametro, valor);
     }
 
-    public void saveOrUpdate(Triagem object) {
-        this.triagemDao.saveOrUpdate(object);
+    public void saveOrUpdate(Object object) {
+        this.triagemDao.saveOrUpdate((Triagem) object);
     }
 
-    public void delete(Triagem object) {
-        this.triagemDao.delete(object);
+    public void delete(Object object) {
+        this.triagemDao.delete((Triagem) object);
     }
-    
-    
 }

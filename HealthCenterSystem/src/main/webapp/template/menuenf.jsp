@@ -1,10 +1,9 @@
 <div id="nav">
 
     <ul id="menu">
-            <li id="itemMenu">Realizar</li>
-            
-            <li><a href="#realizarTriagem">Triagem</a></li>
-        </ul>
+        <li id="itemMenu">Realizar</li>
 
- </div>
-         
+        <li><a href="#filaTriagem">Triagem</a></li>
+    </ul>
+
+</div>

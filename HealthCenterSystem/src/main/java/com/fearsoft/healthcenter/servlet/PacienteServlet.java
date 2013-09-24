@@ -4,7 +4,9 @@
  */
 package com.fearsoft.healthcenter.servlet;
 
+import com.fearsoft.healthcenter.controladores.ConsultaControle;
 import com.fearsoft.healthcenter.controladores.PacienteControle;
+import com.fearsoft.healthcenter.entidades.Consulta;
 import com.fearsoft.healthcenter.entidades.Contato;
 import com.fearsoft.healthcenter.entidades.Endereco;
 import com.fearsoft.healthcenter.entidades.Paciente;
@@ -117,13 +119,13 @@ public class PacienteServlet extends HttpServlet {
     //Retorna o médico passando o ID como busca
     private Paciente getPaciente(HttpServletRequest request, HttpServletResponse response){
         Long id = Long.parseLong(request.getParameter("id"));
-        for (Iterator it = pacienteControle.findAll().iterator(); it.hasNext();) {
-            Paciente m = (Paciente) it.next();
-            if(m.getId()==id){
-                return m;
-            }
-        }
-        return null;
+//        for (Iterator it = pacienteControle.findAll().iterator(); it.hasNext();) {
+//            Paciente m = (Paciente) it.next();
+//            if(m.getId()==id){
+//                return m;
+//            }
+//        }
+        return (Paciente) this.pacienteControle.find(id);
     }
     
     private void setarPaciente(HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException{
@@ -192,4 +194,5 @@ public class PacienteServlet extends HttpServlet {
             formatString(string);
         }return string;
     }
+
 }

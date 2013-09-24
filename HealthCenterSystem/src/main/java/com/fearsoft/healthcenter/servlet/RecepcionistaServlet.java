@@ -40,7 +40,6 @@ private RecepcionistaControle recepcionistaControle;
         recepcionistaControle = new RecepcionistaControle();
         
         String tipoOperacao = request.getParameter("tipoOperacao");
-        System.out.println("TIPO DE OPERAÇÃO "+tipoOperacao);
         
         if(tipoOperacao.equals("cadRecepcionista") ){
             cadastrarRecepcionista(request, response);
@@ -117,13 +116,13 @@ private RecepcionistaControle recepcionistaControle;
     //Retorna o médico passando o ID como busca
     private Recepcionista getRecepcionista(HttpServletRequest request, HttpServletResponse response){
         Long id = Long.parseLong(request.getParameter("id"));
-        for (Iterator it = recepcionistaControle.findAll().iterator(); it.hasNext();) {
-            Recepcionista m = (Recepcionista) it.next();
-            if(m.getId()==id){
-                return m;
-            }
-        }
-        return null;
+//        for (Iterator it = recepcionistaControle.findAll().iterator(); it.hasNext();) {
+//            Recepcionista m = (Recepcionista) it.next();
+//            if(m.getId()==id){
+//                return m;
+//            }
+//        }
+        return (Recepcionista) this.recepcionistaControle.find(id);
     }
     
     private void setarRecepcionista(HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException{
