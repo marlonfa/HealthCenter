@@ -22,14 +22,15 @@ public class HistoricoClinicoDao extends AbstractDao<HistoricoClinico>{
     }
     
     
-    public List<HistoricoClinico>findAll(){   	
-        Session session = HibernateUtil.getSessionFactory().openSession();
+    @Override
+    public List findCustom(Long id){   	
+        Session session = HibernateUtil.getInstance().openSession();
         if(session.beginTransaction() == null){
             session.beginTransaction();
         }
-        List<HistoricoClinico>list = null;
+        List list = null;
         try{
-            list = session.createCriteria(HistoricoClinico.class).addOrder(Order.desc("id")).list();
+            list = session.createCriteria(HistoricoClinico.class).add(Restrictions.eq("idPaciente", id)).addOrder(Order.desc("id")).list();
             session.getTransaction().commit();            
         }catch(Exception e){
             System.out.println("Erro ao Buscar "+e);

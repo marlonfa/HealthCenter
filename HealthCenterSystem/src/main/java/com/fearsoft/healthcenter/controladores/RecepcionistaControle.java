@@ -12,16 +12,16 @@ import java.util.List;
  *
  * @author Eder Ferreira
  */
-public class RecepcionistaControle{
+public class RecepcionistaControle implements InterfaceControle<Recepcionista> {
 
     private Recepcionista recepcionista;
     private RecepcionistaDao recepcionistaDao;
-    
-    public RecepcionistaControle(){
+
+    public RecepcionistaControle() {
         this.recepcionistaDao = new RecepcionistaDao();
         this.recepcionista = new Recepcionista();
     }
-    
+
     public Recepcionista getRecepcionista() {
         return recepcionista;
     }
@@ -30,27 +30,28 @@ public class RecepcionistaControle{
         this.recepcionista = recepcionista;
     }
 
-    public Object find(Object id){
-        return this.recepcionistaDao.find(id);
-    }
-    
-    
-    public List findAll(){
+    @Override
+    public List findAll() {
         return this.recepcionistaDao.findAll();
     }
-    
-    
-    public List findFilter(String parametro, Object valor){
+
+    @Override
+    public List findFilter(String parametro, Object valor) {
         return this.recepcionistaDao.findFilter(parametro, valor);
     }
-    
-    
-    public void saveOrUpdate(Object object){
-        this.recepcionistaDao.saveOrUpdate((Recepcionista) object);
+
+    @Override
+    public void saveOrUpdate(Recepcionista object) {
+        this.recepcionistaDao.saveOrUpdate(object);
     }
-    
-    
-    public void delete(Object object){
-        this.recepcionistaDao.delete((Recepcionista) object);
+
+    @Override
+    public void delete(Recepcionista object) {
+        this.recepcionistaDao.delete(object);
+    }
+
+    @Override
+    public Object find(Long id) {
+        return this.recepcionistaDao.find(id);
     }
 }

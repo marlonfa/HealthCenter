@@ -1,7 +1,12 @@
+<%@page import="com.fearsoft.healthcenter.util.CodeUtil"%>
+<%@page import="java.util.Calendar"%>
+<%@page import="com.fearsoft.healthcenter.entidades.Triagem"%>
+<%@page import="java.util.Date"%>
 <%@page import="java.util.List"%>
 <%@page import="com.fearsoft.healthcenter.controladores.MedicoControle"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,20 +25,38 @@
         <!--<script type="text/javascript" src="../resources/js/jquery.dataTables.editable.js"></script>-->
         <script type="text/javascript" src="../resources/js/jquery.colorbox-min.js"></script>
         <!--<script type="text/javascript" src="../resources/js/fnReloadAjax.js"></script>-->
+        <script type="text/javascript" src="../resources/js/jquery.maskedinput.min.js"></script>
 
 
         <script type="text/javascript">
-            function setTriagem(id) {
 
+            //Função para Colocar Máscaras nos campos
+            $(function() {
+                $.mask.definitions['~'] = "[+-]";
+                $("#altura").mask("9,99");
+                $("#peso").mask("99?9,9");
+                $("#temperatura").mask("99?,9");
+                $("#pressaoArterial").mask("999/99?9");
+            });
+
+
+            function setTriagem(id) {
+//                $("#dialog-confirm").dialog({
+//                    modal: true,
+//                    buttons: {
+//                        Ok: function() {
+//                            $(this).dialog("close");
+//                        }
+//                    }
+//                });
                 $.ajax({
                     url: "TriagemServlet",
                     type: "POST",
-//                    data: 'triagem=' + id,
-                    data: 'tipoOperacao='+ 'realizarTriagem' +'&altura=' + $('#altura').val() + '&peso=' + $('#peso').val() +
+                    data: 'tipoOperacao=' + 'realizarTriagem' + '&altura=' + $('#altura').val() + '&peso=' + $('#peso').val() +
                             '&temperatura=' + $('#temperatura').val() + '&pressaoArterial=' + $('#pressaoArterial').val(),
-                    complete: mudarPagina
+//                    complete: mudarPagina
+                    complete: callDialog
                 });
-
             }
 
             function mudarPagina() {
@@ -45,6 +68,22 @@
                 parent.$.fn.colorbox.close();
             }
             ;
+
+            function callDialog() {
+                $("#dialog-confirm").dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function() {
+                            $(this).dialog("close");
+                            $.ajax({
+                                complete: mudarPagina
+                            });
+                        }
+                    }
+                });
+
+            }
+
         </script>
     </head>
     <body>
@@ -53,35 +92,41 @@
 
             <table>
                 <tr>
-                    <td>Nome:</td>
+                    <td><label>Nome:</label></td>
                     <td>${triagem.paciente.nome}</td>
+                    <td><label>Idade:</label></td>
+                    <td>
+                        <jsp:scriptlet>
+                            Triagem t = (Triagem) request.getSession().getAttribute("triagem");
+                            Date nascimento = t.getPaciente().getDataNascimento();
+                            out.println(new CodeUtil().calcularIdade(nascimento) + "");
+                        </jsp:scriptlet> anos
+                    </td>
                 </tr>
                 <tr>
-                    <td>Sus:</td>
+                    <td><label>Sexo:</label></td>
+                    <td>${triagem.paciente.sexo}</td>
+                    <td><label>Sus:</label></td>
                     <td>${triagem.paciente.sus}</td>
                 </tr>
                 <tr>
-                    <td>Altura:</td>
-                    <td><input type="text" name="altura" id="altura" /></td>
+                    <td><label>Altura:</label></td>
+                    <td><input type="text" name="altura" id="altura" placeholder="_,__"/>m</td>
+                    <td><label>Peso:</label></td>
+                    <td><input type="text" name="peso" id="peso" placeholder="___,_"/>Kg</td>
                 </tr>
                 <tr>
-                    <td>Peso:</td>
-                    <td><input type="text" name="peso" id="peso" /></td>
-                </tr>
-                <tr>
-                    <td>Temperatura:</td>
-                    <td><input type="text" name="temperatura" id="temperatura" /></td>
-                </tr>
-                <tr>
-                    <td>Pressão Arterial:</td>
-                    <td><input type="text" name="pressaoArterial" id="pressaoArterial" /></td>
+                    <td><label>Temperatura:</label></td>
+                    <td><input type="text" name="temperatura" id="temperatura" placeholder="__,_"/>ºC</td>
+                    <td><label>Pressão Arterial:</label></td>
+                    <td><input type="text" name="pressaoArterial" id="pressaoArterial" placeholder="___/___"/></td>
                 </tr>
             </table>
-            <input type="submit" name="salvar" id="salvar" onclick="setTriagem();" />
+            <input type="submit" name="salvar" id="salvar" onclick="setTriagem();" value="Realizar"/>
 
 
             <div id="dialog-confirm" title="Realização de Triagem" hidden="true">
-                <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Realização de Triagem Efetuada com Sucesso!</p>
+                <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Triagem Realizada com Sucesso!</p>
             </div>
     </body>
 </html>

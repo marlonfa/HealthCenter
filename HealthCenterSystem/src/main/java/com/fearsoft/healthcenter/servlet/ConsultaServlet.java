@@ -40,6 +40,8 @@ public class ConsultaServlet extends HttpServlet {
             filaConsulta(request);
         } else if (tipoOperacao.equals("realizarConsulta")) {
             realizarConsulta(request);
+        }else if(tipoOperacao.equals("removerConsulta")){
+            revomerConsulta(request);
         }
     }
 
@@ -91,6 +93,13 @@ public class ConsultaServlet extends HttpServlet {
         
         this.historicoClinicoControle.saveOrUpdate(this.historicoClinicoControle.getHistoricoClinico());
 
-        this.filaConsultaControle.delete(request.getSession().getAttribute("filaConsultaRemovido"));
+        this.filaConsultaControle.delete((FilaConsulta) request.getSession().getAttribute("filaConsultaRemovido"));
+    }
+
+    private void revomerConsulta(HttpServletRequest request) {
+        Long idFilaConsulta = Long.parseLong(request.getParameter("consulta"));
+
+        this.filaConsultaControle.delete((FilaConsulta) this.filaConsultaControle.find(idFilaConsulta));
+        
     }
 }

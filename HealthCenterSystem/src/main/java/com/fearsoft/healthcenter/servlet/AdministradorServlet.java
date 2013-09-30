@@ -117,13 +117,14 @@ public class AdministradorServlet extends HttpServlet {
     //Retorna o médico passando o ID como busca
     private Administrador getAdministrador(HttpServletRequest request, HttpServletResponse response){
         Long id = Long.parseLong(request.getParameter("id"));
-        for (Iterator it = administradorControle.findAll().iterator(); it.hasNext();) {
-            Administrador m = (Administrador) it.next();
-            if(m.getId()==id){
-                return m;
-            }
-        }
-        return null;
+//        for (Iterator it = administradorControle.findAll().iterator(); it.hasNext();) {
+//            Administrador m = (Administrador) it.next();
+//            if(m.getId()==id){
+//                return m;
+//            }
+//        }
+//        return null;
+        return (Administrador) this.administradorControle.find(id);
     }
     
     private void setarAdministrador(HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException{

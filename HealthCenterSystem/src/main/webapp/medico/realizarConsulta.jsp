@@ -1,7 +1,12 @@
+<%@page import="com.fearsoft.healthcenter.util.CodeUtil"%>
+<%@page import="com.fearsoft.healthcenter.entidades.Consulta"%>
+<%@page import="java.lang.String"%>
+<%@page import="java.util.Date"%>
 <%@page import="java.util.List"%>
 <%@page import="com.fearsoft.healthcenter.controladores.MedicoControle"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -31,7 +36,22 @@
 //                    data: 'triagem=' + id,
                     data: 'tipoOperacao=' + 'realizarConsulta' + '&sintomas=' + $('#sintomas').val() + '&diagnostico=' + $('#diagnostico').val() +
                             '&prescricao=' + $('#prescricao').val(),
-                    complete: mudarPagina
+//                    complete: mudarPagina
+                    complete: callDialog
+                });
+            }
+
+            function callDialog() {
+                $("#dialog-confirm").dialog({
+                    modal: true,
+                    buttons: {
+                        Ok: function() {
+                            $(this).dialog("close");
+                            $.ajax({
+                                complete: mudarPagina
+                            });
+                        }
+                    }
                 });
 
             }
@@ -45,22 +65,23 @@
                 parent.$.fn.colorbox.close();
             }
             ;
-            
-            function viewHistorico(id){
-                 $.ajax({
+
+            function viewHistorico(id) {
+                $.ajax({
                     url: "HistoricoClinicoServlet",
                     type: "POST",
                     data: 'historicoId=' + id,
                     complete: callView
                 });
-            };
-            
-            function callView(){
-            $.colorbox({ 
-                href: "viewHistorico.jsp",
-                overlayClose: false 
-            });
-        }
+            }
+            ;
+
+            function callView() {
+                $.colorbox({
+                    href: "viewHistorico.jsp",
+                    overlayClose: false
+                });
+            }
         </script>
     </head>
     <body>
@@ -68,32 +89,40 @@
         <div id="content">
 
             <label>Paciente</label>
-            <table>
+            <table style="width: 320px">
                 <tr>
-                    <td>Nome:</td>
+                    <td><label>Nome:</label></td>
                     <td>${consulta.triagem.paciente.nome}</td>
                 </tr>
                 <tr>
-                    <td>Sexo:</td>
+                    <td><label>Sexo:</label></td>
                     <td>${consulta.triagem.paciente.sexo}</td>
-                    <td>Data Nasc.:</td>
-                    <td>${consulta.triagem.paciente.dataNascimento}</td>
+                    <td><label>Idade:</label></td>
+                    <td>
+                        <jsp:scriptlet>
+                            Consulta c = (Consulta) request.getSession().getAttribute("consulta");
+                            Date nascimento = c.getTriagem().getPaciente().getDataNascimento();
+                            out.println(new CodeUtil().calcularIdade(nascimento) + "");
+                        </jsp:scriptlet> anos
+                    </td>
                 </tr>
             </table>
 
-            <label>Triagem</label>
+            <label>
+                Triagem
+            </label>
 
-            <table>
+            <table style="width: 320px">
                 <tr>
-                    <td>Altura</td>
+                    <td><label>Altura:</label></td>
                     <td>${consulta.triagem.altura}</td>
-                    <td>Peso:</td>
+                    <td><label>Peso:</label></td>
                     <td>${consulta.triagem.peso}</td>
                 </tr>
                 <tr>
-                    <td>Temperatura:</td>
+                    <td><label>Temperatura:</label></td>
                     <td>${consulta.triagem.temperatura}</td>
-                    <td>Pressão Arterial:</td>
+                    <td><label>Pressão Arterial:</label></td>
                     <td>${consulta.triagem.pressaoArterial}</td>
                 </tr>
             </table>    
@@ -120,57 +149,68 @@
 
             <br />
             <br />
-            
-            <label>Histórico Clínico</label>
 
-            <table cellpadding="0" cellspacing="0" border="0" class="display" id="tabela">
-                <thead>
-                    <tr>
-                    <tr>
-                        <th>Nº</th>
-                        <th>Data de Nascimento</th>
-                        <th>Sexo</th>
-                        <th>Sintomas</th>
-                        <th>Realizar Triagem</th>
-                    </tr>
-                    </tr>
-                </thead>
-                <tbody>
-                    <jsp:useBean id="historicoControle" class="com.fearsoft.healthcenter.controladores.HistoricoClinicoControle"/>  
-                    <c:forEach var="historico" items="${historicoControle.findAll()}" step="1" varStatus="row">
-                        <c:choose>
-                            <c:when test="${row.count % 2 == 0}">
-                                <c:set var="estiloLinha" value="even gradeA"  />
-                            </c:when>
-                            <c:otherwise>
-                                <c:set var="estiloLinha" value="odd gradeX"  />
-                            </c:otherwise>
-                        </c:choose>
+            <jsp:useBean id="historicoControle" class="com.fearsoft.healthcenter.controladores.HistoricoClinicoControle"/>  
 
-                        <c:if test="${consulta.triagem.paciente.id eq historico.idPaciente}" >
-                            <tr class="${estiloLinha}">
-                                <td >${row.count}</td>
-                                <td >${historico.consulta.triagem.dataConsulta}</td>
-                                <td >${historico.consulta.triagem.paciente.sexo}</td>
-                                <td >${historico.consulta.sintomas}</td>
-                                <td><input type="submit" id="visualizar" name="visualizar" value="Visualizar" onclick="viewHistorico(${historico.id});"></td>
+            <jsp:scriptlet>
+                Long id = ((Consulta) request.getSession().getAttribute("consulta")).getTriagem().getPaciente().getId();
+                List list = historicoControle.findCustom(id);
+                request.setAttribute("historicoClinico", list);
+            </jsp:scriptlet>
+
+            <c:choose>
+                <c:when test="${historicoClinico.size() > 0}">
+                    <label>Histórico Clínico</label>
+
+                    <table cellpadding="0" cellspacing="0" border="0" class="display" id="tabela">
+                        <thead>
+                            <tr>
+                                <th>Data da Consulta</th>
+                                <th>Sexo</th>
+                                <th>Sintomas</th>
+                                <th>Visualizar</th>
                             </tr>
-                        </c:if>
-                    </c:forEach>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Nº</th>
-                        <th>Data de Nascimento</th>
-                        <th>Sexo</th>
-                        <th>Sintomas</th>
-                        <th>Realizar Triagem</th>
-                    </tr>
-                </tfoot>
-            </table>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="historico" items="${historicoClinico}" step="1" varStatus="row">
+                                <c:choose>
+                                    <c:when test="${row.count % 2 == 0}">
+                                        <c:set var="estiloLinha" value="even gradeA"  />
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:set var="estiloLinha" value="even gradeC"  />
+                                    </c:otherwise>
+                                </c:choose>
 
-            <div id="dialog-confirm" title="Realização de Triagem" hidden="true">
-                <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Realização de Triagem Efetuada com Sucesso!</p>
-            </div>
+                                <%--<c:if test="{consulta.triagem.paciente.id eq historico.idPaciente}" >--%>
+                                    <tr class="${estiloLinha}">
+                                        <td class="realizarConsulta">
+                                            <fmt:formatDate value="${historico.consulta.triagem.dataConsulta}" />
+                                        </td>
+                                        <td class="realizarConsulta">${historico.consulta.triagem.paciente.sexo}</td>
+                                        <td>${historico.consulta.sintomas}</td>
+                                        <td class="realizarConsulta"><input type="submit" id="visualizar" name="visualizar" value="Visualizar" onclick="viewHistorico(${historico.id});"></td>
+                                    </tr>
+                                <%--</c:if>--%>
+                            </c:forEach>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="realizarConsulta">Data da Consulta</td>
+                                <td class="realizarConsulta">Sexo</td>
+                                <td class="realizarConsulta">Sintomas</td>
+                                <td class="realizarConsulta">Visualizar</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div id="dialog-confirm" title="Realização de Triagem" hidden="true">
+                        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Realização de Triagem Efetuada com Sucesso!</p>
+                    </div>
+                </c:when>
+                <c:otherwise>
+                    Não existe histórico registrado.
+                </c:otherwise>
+            </c:choose>
     </body>
 </html>

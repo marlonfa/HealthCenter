@@ -41,6 +41,8 @@ public class TriagemServlet extends HttpServlet {
             filaTriagem(request);
         } else if (tipoOperacao.equals("realizarTriagem")) {
             realizarTriagem(request);
+        } else if (tipoOperacao.equals("removerTriagem")) {
+            removerTriagem(request);
         }
 
     }
@@ -78,11 +80,6 @@ public class TriagemServlet extends HttpServlet {
         session.setAttribute("filaTriagemRemovido", this.filaTriagemControle.getFilaTriagem());
     }
 
-    //PEGAR TRIAGEM DA SESSAO
-    //SETAR OS DADOS NA TRIAGEM
-    //CRIAR UMA FILA DE CONSULTA PARA UM MEDICO
-    //SETAR O ID DO MEDICO NA FILA DE CONSULTA
-    //REMOVER ID DA FILA DE TRIAGEM
     private void realizarTriagem(HttpServletRequest request) {
         this.triagemControle.setTriagem((Triagem) request.getSession().getAttribute("triagem"));
 
@@ -101,10 +98,16 @@ public class TriagemServlet extends HttpServlet {
 
         this.filaConsultaControle.getFilaConsulta().setTriagem(this.triagemControle.getTriagem());
         this.filaConsultaControle.getFilaConsulta().setUsernameMedico(this.triagemControle.getTriagem().getMedico().getUsuario().getUsername());
-        
+
         this.filaConsultaControle.saveOrUpdate(this.filaConsultaControle.getFilaConsulta());
 
         this.filaTriagemControle.delete((FilaTriagem) request.getSession().getAttribute("filaTriagemRemovido"));
 
+    }
+
+    private void removerTriagem(HttpServletRequest request) {
+        Long idFilaTriagem = Long.parseLong(request.getParameter("triagem"));
+
+        this.filaTriagemControle.delete((FilaTriagem) this.filaTriagemControle.find(idFilaTriagem));
     }
 }

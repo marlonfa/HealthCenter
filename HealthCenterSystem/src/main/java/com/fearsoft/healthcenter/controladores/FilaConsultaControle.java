@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Eder Ferreira
  */
-public class FilaConsultaControle {
+public class FilaConsultaControle implements InterfaceControle<FilaConsulta>{
     
     private FilaConsulta filaConsulta;
     private FilaConsultaDao filaConsultaDao;
@@ -30,28 +30,32 @@ public class FilaConsultaControle {
         this.filaConsulta = filaConsulta;
     }
     
-    public Object find(Object id) {
+    @Override
+    public Object find(Long id) {
         return this.filaConsultaDao.find(id);
     }
 
+    @Override
     public List findAll() {
         return this.filaConsultaDao.findAll();
     }
 
+    @Override
     public List findFilter(String parametro, Object valor) {
         return this.filaConsultaDao.findFilter(parametro, valor);
     }
 
-    public List findConsultas(){
-        return this.filaConsultaDao.findConsultas();
-    }
-    
-    public void saveOrUpdate(Object object) {
-        this.filaConsultaDao.saveOrUpdate((FilaConsulta) object);
+    @Override
+    public void saveOrUpdate(FilaConsulta object) {
+        this.filaConsultaDao.saveOrUpdate(object);
     }
 
-    public void delete(Object object) {
-        this.filaConsultaDao.delete((FilaConsulta) object);
+    @Override
+    public void delete(FilaConsulta object) {
+        this.filaConsultaDao.delete(object);
     }
-    
+
+     public void findCustom(Long id){
+        this.filaConsultaDao.findCustom(id);
+    }
 }

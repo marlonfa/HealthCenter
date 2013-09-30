@@ -2,6 +2,7 @@
 <%@page import="com.fearsoft.healthcenter.controladores.MedicoControle"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,19 +25,17 @@
 
     </head>
     <body>
-
+        <h1>Visualização de Histórico</h1>
         <table>
+            <td>
+                <label>Data da Consulta:</label>
+            </td>
+            <td> 
+                <fmt:formatDate value="${historicoClinico.consulta.triagem.dataConsulta}" />
+            </td>
             <tr>
                 <td colspan="4">
                     <h2>Dados Triagem</h2>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label>Data da Consulta</label>
-                </td>
-                <td> 
-                    ${historicoClinico.consulta.triagem.dataConsulta}
                 </td>
             </tr>
             <tr>
@@ -79,6 +78,8 @@
                 <td> 
                     ${historicoClinico.consulta.triagem.medico.nome}
                 </td>
+                <td><label>Especialidade:</label></td>
+                <td>${historicoClinico.consulta.triagem.medico.especialidade}</td>
             </tr>
 
             <tr>

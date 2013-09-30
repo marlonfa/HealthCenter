@@ -5,6 +5,7 @@
 package com.fearsoft.healthcenter.jpa;
 
 import com.fearsoft.healthcenter.entidades.Paciente;
+import java.util.List;
 
 /**
  *
@@ -14,5 +15,10 @@ public class PacienteDao extends AbstractDao<Paciente>{
     
     public PacienteDao(){
         super(Paciente.class);
+    }
+
+    @Override
+    public List<Paciente> findCustom(Long id) {
+        return null;
     }
 }

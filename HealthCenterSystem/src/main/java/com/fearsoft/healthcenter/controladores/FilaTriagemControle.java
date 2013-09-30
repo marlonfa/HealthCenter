@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Eder Ferreira
  */
-public class FilaTriagemControle {
+public class FilaTriagemControle implements InterfaceControle<FilaTriagem>{
     
     private FilaTriagem filaTriagem;
     private FilaTriagemDao filaTriagemDao;
@@ -30,23 +30,33 @@ public class FilaTriagemControle {
         this.filaTriagem = filaTriagem;
     }
     
-    public Object find(Object id) {
+    @Override
+    public Object find(Long id) {
         return this.filaTriagemDao.find(id);
     }
 
+    @Override
     public List findAll() {
         return this.filaTriagemDao.findAll();
     }
 
+    @Override
     public List findFilter(String parametro, Object valor) {
         return this.filaTriagemDao.findFilter(parametro, valor);
     }
 
-    public void saveOrUpdate(Object object) {
-        this.filaTriagemDao.saveOrUpdate((FilaTriagem) object);
+    @Override
+    public void saveOrUpdate(FilaTriagem object) {
+        this.filaTriagemDao.saveOrUpdate(object);
     }
 
-    public void delete(Object object) {
-        this.filaTriagemDao.delete((FilaTriagem) object);
+    @Override
+    public void delete(FilaTriagem object) {
+        this.filaTriagemDao.delete(object);
     }
+    
+    public void findCustom(Long id){
+        this.filaTriagemDao.findCustom(id);
+    }
+
 }

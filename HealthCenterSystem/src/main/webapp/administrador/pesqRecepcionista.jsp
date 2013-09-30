@@ -117,15 +117,15 @@
                             <c:set var="estiloLinha" value="even gradeA"  />
                         </c:when>
                         <c:otherwise>
-                            <c:set var="estiloLinha" value="odd gradeX"  />
+                            <c:set var="estiloLinha" value="even gradeC"  />
                         </c:otherwise>
                 </c:choose>
 		<tr class="${estiloLinha}">
 			<td >${recepcionista.nome}</td>
-			<td >${recepcionista.cpf}</td>
-                        <td id="remove" ><button id="view" onclick="view(${recepcionista.id});">Visualizar</button></td>
-                        <td id="remove" ><button id="edit" class="edit" onclick="edit(${recepcionista.id});" abrir="#editRecepcionista">Editar</button></td>
-                        <td id="remove" ><button id="removeRecepcionista" onclick="removeRecepcionista(${recepcionista.id});">Remover</button></td>
+			<td class="realizarConsulta">${recepcionista.cpf}</td>
+                        <td class="realizarConsulta" id="remove" ><button id="view" onclick="view(${recepcionista.id});">Visualizar</button></td>
+                        <td class="realizarConsulta" id="remove" ><button id="edit" class="edit" onclick="edit(${recepcionista.id});" abrir="#editRecepcionista">Editar</button></td>
+                        <td class="realizarConsulta" id="remove" ><button id="removeRecepcionista" onclick="removeRecepcionista(${recepcionista.id});">Remover</button></td>
 		</tr>
                 </c:forEach>
                 </tbody>

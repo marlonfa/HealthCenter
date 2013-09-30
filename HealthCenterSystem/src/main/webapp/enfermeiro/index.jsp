@@ -14,12 +14,8 @@
         
         <script type="text/javascript" src="../resources/js/jquery-1.10.2.js"></script>
         <script type="text/javascript" src="../resources/js/jQueryDynamicContent.js"></script>
-        <!--<script type="text/javascript" src="../resources/js/jquery.maskedinput.min.js"></script>--> 
-        <!--<script type="text/javascript" src="../resources/js/jQueryValidate.js"></script>--> 
-        <!--<script type="text/javascript" src="../resources/js/jQueryValidaCPJeCNPJ.js"></script>-->
         <script type="text/javascript" src="../resources/js/jquery.colorbox-min.js"></script>
         
-                    
     </head>
     <body>
         

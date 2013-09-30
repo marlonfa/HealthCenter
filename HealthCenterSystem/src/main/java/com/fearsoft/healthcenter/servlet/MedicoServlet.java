@@ -118,13 +118,14 @@ public class MedicoServlet extends HttpServlet {
     //Retorna o médico passando o ID como busca
     private Medico getMedico(HttpServletRequest request, HttpServletResponse response){
         Long id = Long.parseLong(request.getParameter("id"));
-        for (Iterator it = medicoControle.findAll().iterator(); it.hasNext();) {
-            Medico m = (Medico) it.next();
-            if(m.getId()==id){
-                return m;
-            }
-        }
-        return null;
+//        for (Iterator it = medicoControle.findAll().iterator(); it.hasNext();) {
+//            Medico m = (Medico) it.next();
+//            if(m.getId()==id){
+//                return m;
+//            }
+//        }
+//        return null;
+        return (Medico) this.medicoControle.find(id);
     }
     
     private void setarMedico(HttpServletRequest request, HttpServletResponse response) throws IOException, ParseException{

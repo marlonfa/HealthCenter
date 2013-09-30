@@ -204,10 +204,10 @@ public class GerarBanco {
         
 //        Paciente paciente = new Paciente();
 //        
-//        paciente.setCpf("12345678909");
+//        paciente.setCpf("36693829848");
 //        paciente.setEstadoCivil(EstadoCivil.CASADO);
-//        paciente.setNaturalidade("Springfieldiano");
-//        paciente.setNome("Bart Simpson");
+//        paciente.setNaturalidade("Mouraoense");
+//        paciente.setNome("Marlon Super Viadinho");
 //        paciente.setRg("333534578");
 //        paciente.setSexo(Sexo.MASCULINO);
 //        paciente.setSus("333111122224444");
@@ -215,7 +215,7 @@ public class GerarBanco {
 //        paciente.setContato(new Contato());
 //        paciente.getContato().setTelefone("4435251418");
 //        paciente.getContato().setCelular("4498343609");
-//        paciente.getContato().setEmail("bart@gmail.com");
+//        paciente.getContato().setEmail("marlonfa@gmail.com");
 //        
 //        
 //        Date data4 = null;
@@ -225,7 +225,7 @@ public class GerarBanco {
 //        paciente.setEndereco(new Endereco());
 //        paciente.getEndereco().setBairro("Centro");
 //        paciente.getEndereco().setCep("87302180");
-//        paciente.getEndereco().setCidade("SpringField");
+//        paciente.getEndereco().setCidade("Campo Mourao");
 //        paciente.getEndereco().setComplemento("Ap. 09");
 //        paciente.getEndereco().setNomeEndereco("Rua Rui Dias");
 //        paciente.getEndereco().setNumero(1824);
@@ -233,7 +233,7 @@ public class GerarBanco {
 //        
 //        paciente.setUsuario(new Usuario());
 //        paciente.getUsuario().setAuthority(null);
-//        paciente.getUsuario().setName("Bart");
+//        paciente.getUsuario().setName("Marlon");
 //        paciente.getUsuario().setPassword("123");
 //        paciente.getUsuario().setUsername("84743912105");
 //        
@@ -252,12 +252,14 @@ public class GerarBanco {
 //        triagem.setTemperatura(36.0);
         
         
-//        List <Administrador> lista = new AdministradorDao().findFilter("nome", "");
-//        
-//        for (Iterator<Administrador> it = lista.iterator(); it.hasNext();) {
-//            Administrador administrador = it.next();
-//            System.out.println(administrador.getNome());
-//        }
+        List <Administrador> lista = new AdministradorDao().findFilter("nome", "");
+        
+        for (Iterator<Administrador> it = lista.iterator(); it.hasNext();) {
+            Administrador administrador = it.next();
+            System.out.println(administrador.getNome());
+        }
+        
+
         
     }
     

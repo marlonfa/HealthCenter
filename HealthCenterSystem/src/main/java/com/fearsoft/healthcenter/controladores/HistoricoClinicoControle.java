@@ -12,8 +12,8 @@ import java.util.List;
  *
  * @author Eder Ferreira
  */
-public class HistoricoClinicoControle {
-    
+public class HistoricoClinicoControle implements InterfaceControle<HistoricoClinico> {
+
     private HistoricoClinico historicoClinico;
     private HistoricoClinicoDao historicoClinicoDao;
 
@@ -21,8 +21,7 @@ public class HistoricoClinicoControle {
         this.historicoClinico = new HistoricoClinico();
         this.historicoClinicoDao = new HistoricoClinicoDao();
     }
-    
-    
+
     public HistoricoClinico getHistoricoClinico() {
         return historicoClinico;
     }
@@ -30,25 +29,33 @@ public class HistoricoClinicoControle {
     public void setHistoricoClinico(HistoricoClinico historicoClinico) {
         this.historicoClinico = historicoClinico;
     }
-    
-    public Object find(Object id) {
+
+    @Override
+    public Object find(Long id) {
         return this.historicoClinicoDao.find(id);
     }
 
+    @Override
     public List findAll() {
         return this.historicoClinicoDao.findAll();
     }
 
+    @Override
     public List findFilter(String parametro, Object valor) {
         return this.historicoClinicoDao.findFilter(parametro, valor);
     }
-
-    public void saveOrUpdate(Object object) {
-        this.historicoClinicoDao.saveOrUpdate((HistoricoClinico) object);
-    }
-
-    public void delete(Object object) {
-        this.historicoClinicoDao.delete((HistoricoClinico) object);
-    }
     
+    public List findCustom(Long id){
+        return this.historicoClinicoDao.findCustom(id);
+    }
+
+    @Override
+    public void saveOrUpdate(HistoricoClinico object) {
+        this.historicoClinicoDao.saveOrUpdate(object);
+    }
+
+    @Override
+    public void delete(HistoricoClinico object) {
+        this.historicoClinicoDao.delete(object);
+    }
 }

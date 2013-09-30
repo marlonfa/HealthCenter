@@ -64,7 +64,6 @@
                     data: 'medicoId=' + medicoId + '&pacienteId=' + pacienteId + '&tipoOperacao=' + 'solicitarTriagem',
                     complete: callDialog
                 });
-                reload;
             }
             ;
 
@@ -74,67 +73,16 @@
                     buttons: {
                         Ok: function() {
                             $(this).dialog("close");
-                            callView();
+                            location.reload();
                         }
                     }
                 });
             }
-             
-            function reload(){
-                location.reload();
-            }
-
-
         </script>
     </head>
     <body>
-        <h1>Pesquisa de Médico</h1>
         <div id="content">
-            <table cellpadding="0" cellspacing="0" border="0" class="display" id="tabela">
-                <thead>
-                    <tr>
-                    <tr>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>CRM</th>
-                        <th>Especialização</th>
-                        <th>Selecionar</th>
-                    </tr>
-                    </tr>
-                </thead>
-                <tbody>
-                    <jsp:useBean id="medicoControle" class="com.fearsoft.healthcenter.controladores.MedicoControle"/>  
-                    <c:forEach var="medico" items="${medicoControle.findAll()}" step="1" varStatus="row">
-                        <c:choose>
-                            <c:when test="${row.count % 2 == 0}">
-                                <c:set var="estiloLinha" value="even gradeA"  />
-                            </c:when>
-                            <c:otherwise>
-                                <c:set var="estiloLinha" value="odd gradeX"  />
-                            </c:otherwise>
-                        </c:choose>
-                        <tr class="${estiloLinha}">
-                            <td >${medico.nome}</td>
-                            <td >${medico.cpf}</td>
-                            <td >${medico.crm}</td>
-                            <td >${medico.especialidade}</td>
-                            <td><input type="radio" id="medico" name="medico"  onclick="setMedico(${medico.id});"></td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th>CRM</th>
-                        <th>Especialização</th>
-                        <th>Selecionar</th>
-                    </tr>
-                </tfoot>
-            </table>
-
-        <h1>Pesquisa de Paciente</h1>
-
+            <h1>Solicitação de Triagem</h1>
             <table cellpadding="0" cellspacing="0" border="0" class="display" id="tabela2">
                 <thead>
                     <tr>
@@ -155,16 +103,16 @@
                                 <c:set var="estiloLinha" value="even gradeA"  />
                             </c:when>
                             <c:otherwise>
-                                <c:set var="estiloLinha" value="odd gradeX"  />
+                                <c:set var="estiloLinha" value="even gradeC"  />
                             </c:otherwise>
                         </c:choose>
                         <tr class="${estiloLinha}">
                             <td >${paciente.nome}</td>
-                            <td >${paciente.cpf}</td>
-                            <td >${paciente.rg}</td>
-                            <td >${paciente.sus}</td>
+                            <td class="realizarConsulta">${paciente.cpf}</td>
+                            <td class="realizarConsulta">${paciente.rg}</td>
+                            <td class="realizarConsulta">${paciente.sus}</td>
 
-                            <td><input type="radio" id="paciente" name="paciente"  onclick="setPaciente(${paciente.id});"></td>
+                            <td class="realizarConsulta"><input type="radio" id="paciente" name="paciente"  onclick="setPaciente(${paciente.id});"></td>
 
                         </tr>
                     </c:forEach>
@@ -175,6 +123,50 @@
                         <th>CPF</th>
                         <th>RG</th>
                         <th>SUS</th>
+                        <th>Selecionar</th>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <h1>Pesquisa de Médico</h1>
+            <table cellpadding="0" cellspacing="0" border="0" class="display" id="tabela">
+                <thead>
+                    <tr>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>CRM</th>
+                        <th>Especialização</th>
+                        <th>Selecionar</th>
+                    </tr>
+                    </tr>
+                </thead>
+                <tbody>
+                    <jsp:useBean id="medicoControle" class="com.fearsoft.healthcenter.controladores.MedicoControle"/>  
+                    <c:forEach var="medico" items="${medicoControle.findAll()}" step="1" varStatus="row">
+                        <c:choose>
+                            <c:when test="${row.count % 2 == 0}">
+                                <c:set var="estiloLinha" value="even gradeA"  />
+                            </c:when>
+                            <c:otherwise>
+                                <c:set var="estiloLinha" value="even gradeC"  />
+                            </c:otherwise>
+                        </c:choose>
+                        <tr class="${estiloLinha}">
+                            <td >${medico.nome}</td>
+                            <td class="realizarConsulta">${medico.cpf}</td>
+                            <td class="realizarConsulta">${medico.crm}</td>
+                            <td class="realizarConsulta">${medico.especialidade}</td>
+                            <td class="realizarConsulta"><input type="radio" id="medico" name="medico"  onclick="setMedico(${medico.id});"></td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>CRM</th>
+                        <th>Especialização</th>
                         <th>Selecionar</th>
                     </tr>
                 </tfoot>

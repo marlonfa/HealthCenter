@@ -21,8 +21,8 @@ public class FilaTriagemDao extends AbstractDao<FilaTriagem>{
     }
     
     @Override
-    public List<FilaTriagem>findAll(){   	
-        Session session = HibernateUtil.getSessionFactory().openSession();
+    public List<FilaTriagem>findCustom(Long id){   	
+        Session session = HibernateUtil.getInstance().openSession();
         if(session.beginTransaction() == null){
             session.beginTransaction();
         }

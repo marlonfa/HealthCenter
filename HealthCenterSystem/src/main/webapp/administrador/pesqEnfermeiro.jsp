@@ -118,16 +118,16 @@
                             <c:set var="estiloLinha" value="even gradeA"  />
                         </c:when>
                         <c:otherwise>
-                            <c:set var="estiloLinha" value="odd gradeX"  />
+                            <c:set var="estiloLinha" value="even gradeC"  />
                         </c:otherwise>
                 </c:choose>
 		<tr class="${estiloLinha}">
 			<td >${enfermeiro.nome}</td>
-			<td >${enfermeiro.cpf}</td>
-			<td >${enfermeiro.coren}</td>
-                        <td id="remove" ><button id="view" onclick="view(${enfermeiro.id});">Visualizar</button></td>
-                        <td id="remove" ><button id="edit" class="edit" onclick="edit(${enfermeiro.id});" abrir="#editEnfermeiro">Editar</button></td>
-                        <td id="remove" ><button id="removeEnfermeiro" onclick="removeEnfermeiro(${enfermeiro.id});">Remover</button></td>
+			<td class="realizarConsulta">${enfermeiro.cpf}</td>
+			<td class="realizarConsulta">${enfermeiro.coren}</td>
+                        <td class="realizarConsulta" id="remove" ><button id="view" onclick="view(${enfermeiro.id});">Visualizar</button></td>
+                        <td class="realizarConsulta" id="remove" ><button id="edit" class="edit" onclick="edit(${enfermeiro.id});" abrir="#editEnfermeiro">Editar</button></td>
+                        <td class="realizarConsulta" id="remove" ><button id="removeEnfermeiro" onclick="removeEnfermeiro(${enfermeiro.id});">Remover</button></td>
 		</tr>
                 </c:forEach>
                 </tbody>

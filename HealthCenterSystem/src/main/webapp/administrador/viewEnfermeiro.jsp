@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,7 +26,7 @@
     </head>
     <body>
 <div id="content">
-                <h1>Visualização de Médico</h1>
+                <h1>Visualização de Enfermeiro</h1>
                     <table>
                         <tr>
                             <td colspan="8">
@@ -52,7 +53,7 @@
                                 <label>Data Nasc.:</label>
                             </td>
                             <td>
-                                ${enfermeiro.dataNascimento}
+                                <fmt:formatDate value="${enfermeiro.dataNascimento}" />
                             </td>
                             <td>
                                 <label>Sexo:</label>

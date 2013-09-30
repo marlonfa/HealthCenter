@@ -12,7 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-        Página de Acesso para Administradores do Sistema Health Center!!!
+        <h1>Bem Vindo!</h1>
+        Página de Acesso para Recepcionista do Sistema Health Center!!!
     </body>
 </html>

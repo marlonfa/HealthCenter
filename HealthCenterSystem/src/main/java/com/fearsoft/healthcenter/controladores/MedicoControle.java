@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Eder Ferreira
  */
-public class MedicoControle{
+public class MedicoControle implements InterfaceControle<Medico>{
     
     private Medico medico;
     private MedicoDao medicoDao;
@@ -29,28 +29,32 @@ public class MedicoControle{
     public void setMedico(Medico medico) {
         this.medico = medico;
     }
-
-    public Object find(Object id){
+    @Override
+    public Object find(Long id) {
         return this.medicoDao.find(id);
     }
-    
-    
-    public List findAll(){
+
+    @Override
+    public List findAll() {
         return this.medicoDao.findAll();
     }
-    
-    
-    public List findFilter(String parametro, Object valor){
+
+    @Override
+    public List findFilter(String parametro, Object valor) {
         return this.medicoDao.findFilter(parametro, valor);
     }
-    
-    
-    public void saveOrUpdate(Object object){
-        this.medicoDao.saveOrUpdate((Medico) object);
+
+    @Override
+    public void saveOrUpdate(Medico object) {
+        this.medicoDao.saveOrUpdate(object);
     }
-    
-    
-    public void delete(Object object){
-        this.medicoDao.delete((Medico) object);
+
+    @Override
+    public void delete(Medico object) {
+        this.medicoDao.delete(object);
     }
+
+
+    
+    
 }

@@ -29,7 +29,7 @@ public class AdministradorControle {
         this.administrador = administrador;
     }
 
-    public Object find(Administrador id) {
+    public Object find(Long id) {
         return this.administradorDao.find(id);
     }
 
@@ -37,7 +37,7 @@ public class AdministradorControle {
         return this.administradorDao.findAll();
     }
 
-    public List findFilter(String parametro, Administrador valor) {
+    public List findFilter(String parametro, Object valor) {
         return this.administradorDao.findFilter(parametro, valor);
     }
 

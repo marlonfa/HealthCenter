@@ -62,7 +62,7 @@
                     nomeEndereco: {required: true, minlength: 6, maxlength: 60},
                     numeroEndereco: {required: true, minlength: 1, maxlength: 6, number: true},
                     //complemento: {required: false, minlngth: 3, maxlength: 30},
-                    bairro: {required: true, minlength: 6, maxlength: 30},
+                    bairro: {required: true, minlength: 5, maxlength: 30},
                     cidade: {required: true, minlength: 5, maxlength: 50},
                     cep: {required: true, minlength: 9, maxlength: 9},
                     //telefone:{required: false, minlength: 10, maxlength: 10},
@@ -151,7 +151,7 @@ function callView(){
                                 <label>Nome:</label>
                             </td>
                             <td colspan="7"> 
-                                <input type="text" id="nome" name="nome" placeholder="Digite aqui o nome do Médico" size="150" />
+                                <input type="text" id="nome" name="nome" placeholder="Digite aqui o nome do Médico" size="150" maxlength="100"/>
                             </td>
                         </tr>
                         <tr>
@@ -159,7 +159,7 @@ function callView(){
                                 <label>Naturalidade:</label>
                             </td>
                             <td>
-                                <input type="text" id="naturalidade" name="naturalidade" size="20" placeholder="Digite a naturalidade"/>
+                                <input type="text" id="naturalidade" name="naturalidade" size="20" placeholder="Digite a naturalidade" maxlength="30"/>
                             </td>
                             <td>
                                 <label>Especialidade:</label>
@@ -227,7 +227,7 @@ function callView(){
                                 <label>Endereço:</label>
                             </td>
                             <td colspan="7"> 
-                                <input type="text" id="nomeEndereco" name="nomeEndereco" placeholder="Digite aqui o endereço do Médico" size="140" />
+                                <input type="text" id="nomeEndereco" name="nomeEndereco" placeholder="Digite aqui o endereço do Médico" size="140" maxlength="60"/>
                             </td>
                         </tr>
                         <tr>
@@ -241,13 +241,13 @@ function callView(){
                                 <label>Complemento:</label>
                             </td>
                             <td>
-                                <input type="text" id="complemento" name="complemento" placeholder="Complemento" size="20" maxlength="30" />
+                                <input type="text" id="complemento" name="complemento" placeholder="Complemento" size="20" />
                             </td>
                             <td>
                                 <label>Bairro:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="bairro" name="bairro" placeholder="Digite o nome do Bairro" size="20" />
+                                <input type="text" id="bairro" name="bairro" placeholder="Digite o nome do Bairro" size="20" maxlength="30" />
                             </td>
                         </tr>
                         <tr>
@@ -255,7 +255,7 @@ function callView(){
                                 <label>Cidade:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="cidade" name="cidade" placeholder="Digite o nome da cidade" size="70" />
+                                <input type="text" id="cidade" name="cidade" placeholder="Digite o nome da cidade" size="70" maxlength="50"/>
                             </td>
                             <td>
                                 <label>CEP:</label>

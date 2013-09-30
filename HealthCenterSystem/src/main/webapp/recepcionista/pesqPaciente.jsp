@@ -63,10 +63,10 @@
             $.ajax({
                 url: "PacienteServlet",  
                 type: "POST",
-                data: 'id='+ pacienteId +'&tipoOperacao='+ 'editPaciente'
-//                complete: callEdit
+                data: 'id='+ pacienteId +'&tipoOperacao='+ 'editPaciente',
+                complete: callEdit
             }); 
-            callEdit();           
+//            callEdit();           
         };
         
         function view(pacienteId){
@@ -117,15 +117,15 @@
                             <c:set var="estiloLinha" value="even gradeA"  />
                         </c:when>
                         <c:otherwise>
-                            <c:set var="estiloLinha" value="odd gradeX"  />
+                            <c:set var="estiloLinha" value="even gradeC"  />
                         </c:otherwise>
                 </c:choose>
 		<tr class="${estiloLinha}">
 			<td >${paciente.nome}</td>
-			<td >${paciente.cpf}</td>
-                        <td id="remove" ><button id="view" onclick="view(${paciente.id});">Visualizar</button></td>
-                        <td id="remove" ><button id="edit" class="edit" onclick="edit(${paciente.id});" abrir="#editPaciente">Editar</button></td>
-                        <td id="remove" ><button id="removePaciente" onclick="removePaciente(${paciente.id});">Remover</button></td>
+			<td class="realizarConsulta">${paciente.cpf}</td>
+                        <td class="realizarConsulta" id="remove" ><button id="view" onclick="view(${paciente.id});">Visualizar</button></td>
+                        <td class="realizarConsulta" id="remove" ><button id="edit" class="edit" onclick="edit(${paciente.id});" abrir="#editPaciente">Editar</button></td>
+                        <td class="realizarConsulta" id="remove" ><button id="removePaciente" onclick="removePaciente(${paciente.id});">Remover</button></td>
 		</tr>
                 </c:forEach>
                 </tbody>

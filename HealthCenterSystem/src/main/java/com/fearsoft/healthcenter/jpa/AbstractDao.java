@@ -21,7 +21,7 @@ public abstract class AbstractDao<T> {
     }
     
     public void saveOrUpdate(T object) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getInstance().openSession();
         if(session.beginTransaction() == null){
             session.beginTransaction();
         }
@@ -38,7 +38,7 @@ public abstract class AbstractDao<T> {
     }
     
     public void delete(T object) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getInstance().openSession();
         if(session.beginTransaction() == null){
             session.beginTransaction();
         }
@@ -54,7 +54,7 @@ public abstract class AbstractDao<T> {
     }  
     
     public List findFilter(String parametro, Object valor){
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getInstance().openSession();
         if(session.beginTransaction() == null){
             session.beginTransaction();
         }
@@ -74,7 +74,7 @@ public abstract class AbstractDao<T> {
     }
     
     public T find(Object id) {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getInstance().openSession();
         if(session.beginTransaction() == null){
             session.beginTransaction();
         }
@@ -93,7 +93,7 @@ public abstract class AbstractDao<T> {
     }
         
     public List<T>findAll(){   	
-        Session session = HibernateUtil.getSessionFactory().openSession();
+        Session session = HibernateUtil.getInstance().openSession();
         if(session.beginTransaction() == null){
             session.beginTransaction();
         }
@@ -109,4 +109,6 @@ public abstract class AbstractDao<T> {
         }
         return list;
     }
+    
+     public abstract List<T>findCustom(Long id);   
 }

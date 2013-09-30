@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface InterfaceControle <E>{
     
-    public Object find(E id);
+    public Object find(Long id);
     public List findAll();
-    public List findFilter(String parametro, E valor);
-    public void createOrSave(E object);
+    public List findFilter(String parametro, Object valor);
+    public void saveOrUpdate(E object);
     public void delete(E object);
 }

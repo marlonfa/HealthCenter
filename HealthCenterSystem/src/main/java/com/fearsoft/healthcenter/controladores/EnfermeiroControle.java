@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Eder Ferreira
  */
-public class EnfermeiroControle{
+public class EnfermeiroControle implements InterfaceControle<Enfermeiro>{
     
     private Enfermeiro enfermeiro;
     private EnfermeiroDao enfermeiroDao;
@@ -39,27 +39,30 @@ public class EnfermeiroControle{
     }
     
     
-    public Object find(Object id){
+    @Override
+    public Object find(Long id){
         return this.enfermeiroDao.find(id);
     }
     
     
+    @Override
     public List findAll(){
         return this.enfermeiroDao.findAll();
     }
-    
-    
-    public List findFilter(String parametro, Object valor){
+
+    @Override
+    public List findFilter(String parametro, Object valor) {
         return this.enfermeiroDao.findFilter(parametro, valor);
     }
-    
-    
-    public void saveOrUpdate(Object object){
-        this.enfermeiroDao.saveOrUpdate((Enfermeiro) object);
+
+    @Override
+    public void saveOrUpdate(Enfermeiro object) {
+        this.enfermeiroDao.saveOrUpdate(object);
+    }
+
+    @Override
+    public void delete(Enfermeiro object) {
+        this.enfermeiroDao.delete(object);
     }
     
-    
-    public void delete(Object object){
-        this.enfermeiroDao.delete((Enfermeiro) object);
-    }
 }

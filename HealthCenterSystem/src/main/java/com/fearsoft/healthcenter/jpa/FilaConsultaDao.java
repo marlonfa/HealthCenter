@@ -20,13 +20,14 @@ public class FilaConsultaDao extends AbstractDao<FilaConsulta> {
     public FilaConsultaDao() {
         super(FilaConsulta.class);
     }
-
-    public List<FilaConsulta> findConsultas() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
+    
+    @Override
+    public List findCustom(Long id) {
+        Session session = HibernateUtil.getInstance().openSession();
         if (session.beginTransaction() == null) {
             session.beginTransaction();
         }
-        List<FilaConsulta> list = null;
+        List list = null;
         try {
             list = session.createCriteria(FilaConsulta.class).addOrder(Order.asc("id")).list();
             session.getTransaction().commit();

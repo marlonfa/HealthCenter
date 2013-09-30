@@ -7,14 +7,14 @@
         <script>
             function edit(medicoId) {
                 $.ajax({
-                    url: "MedicoServlet",
+                    url: "PacienteServlet",
                     type: "POST",
-                    data: 'id=' + medicoId + '&tipoOperacao=' + 'editMedico'
+                    data: 'id=' + medicoId + '&tipoOperacao=' + 'editPaciente'
                 });
                 loading = new Image();
                 loading.src = '../imagens/ajax-loader.gif';
                 $('#div_content').html('<img id="loader" src="../imagens/ajax-loader.gif" />');
-                $('#div_content').load('editMedico.jsp').delay(250).hide().fadeIn();
+                $('#div_content').load('editPaciente.jsp').delay(250).hide().fadeIn();
                 parent.$.fn.colorbox.close();
             }
             ;
@@ -27,7 +27,7 @@
     </head>
     <body>
         <div id="content">
-            <h1>Visualização de Médico</h1>
+            <h1>Visualização de Paciente</h1>
             <table>
                 <tr>
                     <td colspan="8">
@@ -39,7 +39,7 @@
                         <label>Nome:</label>
                     </td>
                     <td colspan="7"> 
-                        ${medico.nome}
+                        ${paciente.nome}
 
                     </td>
                 </tr>
@@ -48,45 +48,37 @@
                         <label>Naturalidade:</label>
                     </td>
                     <td>
-                        ${medico.naturalidade}
-                    </td>
-                    <td>
-                        <label>Especialidade:</label>
-                    </td>
-                    <td>
-                        ${medico.especialidade}
+                        ${paciente.naturalidade}
                     </td>
                     <td>
                         <label>Data Nasc.:</label>
                     </td>
                     <td>
-                        <fmt:formatDate value="${medico.dataNascimento}" />
+                        <fmt:formatDate value="${paciente.dataNascimento}" />
                     </td>
                     <td>
                         <label>Sexo:</label>
                     </td>
                     <td>
-                        ${medico.sexo}
+                        ${paciente.sexo}
                     </td>
                 </tr>
                 <tr>
                     <td>
+                        <label>Estado Civil:</label>
+                    </td>
+                    <td>${paciente.estadoCivil}</td>
+                    <td>
                         <label>CPF:</label>
                     </td>
                     <td>
-                        ${medico.cpf}
+                        ${paciente.cpf}
                     </td>
                     <td>
                         <label>RG:</label>
                     </td>
                     <td>
-                        ${medico.rg}
-                    </td>
-                    <td>
-                        <label>CRM:</label>
-                    </td>
-                    <td colspan="3">
-                        ${medico.crm}
+                        ${paciente.rg}
                     </td>
                 </tr>
                 <tr>
@@ -99,7 +91,7 @@
                         <label>Endereço:</label>
                     </td>
                     <td colspan="7"> 
-                        ${medico.endereco.nomeEndereco}
+                        ${paciente.endereco.nomeEndereco}
                     </td>
                 </tr>
                 <tr>
@@ -107,19 +99,19 @@
                         <label>Número:</label>
                     </td>
                     <td>
-                        ${medico.endereco.numero}
+                        ${paciente.endereco.numero}
                     </td>
                     <td>
                         <label>Complemento:</label>
                     </td>
                     <td>
-                        ${medico.endereco.complemento}
+                        ${paciente.endereco.complemento}
                     </td>
                     <td>
                         <label>Bairro:</label>
                     </td>
                     <td colspan="3">
-                        ${medico.endereco.bairro}
+                        ${paciente.endereco.bairro}
                     </td>
                 </tr>
                 <tr>
@@ -127,13 +119,13 @@
                         <label>Cidade:</label>
                     </td>
                     <td colspan="3">
-                        ${medico.endereco.cidade}
+                        ${paciente.endereco.cidade}
                     </td>
                     <td>
                         <label>CEP:</label>
                     </td>
                     <td colspan="3">
-                        ${medico.endereco.cep}
+                        ${paciente.endereco.cep}
                     </td>
                 </tr>
                 <tr>
@@ -146,24 +138,24 @@
                         <label>Tel. Residencial:</label>
                     </td>
                     <td>
-                        ${medico.contato.telefone}
+                        ${paciente.contato.telefone}
                     </td>
                     <td>
                         <label>Celular:</label>
                     </td>
                     <td>
-                        ${medico.contato.celular}
+                        ${paciente.contato.celular}
                     </td>
                     <td>
                         <label>Email:</label>
                     </td>
                     <td colspan="3">
-                        ${medico.contato.email}
+                        ${paciente.contato.email}
                     </td>
                 </tr>
             </table>
             <button type="button" onclick="fechar();">Fechar</button>
-            <button id="edit" onclick="edit(${medico.id});">Editar</button>
+            <button id="edit" onclick="edit(${paciente.id});">Editar</button>
         </div>
     </body>
 </html>

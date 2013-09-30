@@ -5,6 +5,7 @@
 package com.fearsoft.healthcenter.jpa;
 
 import com.fearsoft.healthcenter.entidades.Triagem;
+import java.util.List;
 
 /**
  *
@@ -15,4 +16,10 @@ public class TriagemDao extends AbstractDao<Triagem>{
     public TriagemDao(){
         super(Triagem.class);
     }
+
+    @Override
+    public List<Triagem> findCustom(Long id) {
+        return null;
+    }
+    
 }

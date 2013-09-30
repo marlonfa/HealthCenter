@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Eder Ferreira
  */
-public class PacienteControle{
+public class PacienteControle implements InterfaceControle<Paciente>{
     private Paciente paciente;
     private PacienteDao pacienteDao;
     
@@ -29,27 +29,29 @@ public class PacienteControle{
         this.paciente = paciente;
     }
 
-    public Object find(Object id){
+    @Override
+    public Object find(Long id) {
         return this.pacienteDao.find(id);
     }
-    
-    
-    public List findAll(){
+
+    @Override
+    public List findAll() {
         return this.pacienteDao.findAll();
     }
-    
-    
-    public List findFilter(String parametro, Object valor){
+
+    @Override
+    public List findFilter(String parametro, Object valor) {
         return this.pacienteDao.findFilter(parametro, valor);
     }
-    
-    
-    public void saveOrUpdate(Object object){
-        this.pacienteDao.saveOrUpdate((Paciente) object);
+
+    @Override
+    public void saveOrUpdate(Paciente object) {
+        this.pacienteDao.saveOrUpdate(object);
     }
-    
-    
-    public void delete(Object object){
-        this.pacienteDao.delete((Paciente) object);
+
+    @Override
+    public void delete(Paciente object) {
+        this.pacienteDao.delete(object);
     }
+
 }

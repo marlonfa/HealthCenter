@@ -61,7 +61,7 @@
                     nomeEndereco: {required: true, minlength: 6, maxlength: 60},
                     numeroEndereco: {required: true, minlength: 1, maxlength: 6, number: true},
                     //complemento: {required: false, minlngth: 3, maxlength: 30},
-                    bairro: {required: true, minlength: 6, maxlength: 30},
+                    bairro: {required: true, minlength: 5, maxlength: 30},
                     cidade: {required: true, minlength: 5, maxlength: 50},
                     cep: {required: true, minlength: 9, maxlength: 9},
                     //telefone:{required: false, minlength: 10, maxlength: 10},
@@ -82,8 +82,8 @@
                 nomeEndereco: {required: "Digite um endereço. Ex: Rua Getúlio Vargas", minlength: "Endereço deve ter no mínimo 6 dígitos ", maxlength: "Endereço deve ter no máximo 50 dígitos"},
                 numeroEndereco: {required: "Digite um número. Ex: 1234", minlength: "Número deve ter no mínimo 1 dígitos ", maxlength: "Número deve ter no máximo 6 dígitos", number: "Digite somente números"},
                 //complemento: {required: "Opcional", minlength: "Complemento deve ter no mínimo 3 dígitos", maxlength: "Complemento deve ter no máximo 30 dígitos"},
-                bairro: {required: "Digite um bairro. Ex: Vila Copacabana", minlength: "Bairro deve ter no mínimo 6 dígitos ", maxlength: "Bairro deve ter no máximo 30 dígitos"},
-                cidade: {required: "Digite uma cidade. Ex: Campo Mourão", minlength: "Cidade deve ter no mínimo 6 dígitos ", maxlength: "Cidade deve ter no máximo 50 dígitos"},
+                bairro: {required: "Digite um bairro. Ex: Vila Copacabana", minlength: "Bairro deve ter no mínimo 5 dígitos ", maxlength: "Bairro deve ter no máximo 30 dígitos"},
+                cidade: {required: "Digite uma cidade. Ex: Campo Mourão", minlength: "Cidade deve ter no mínimo 5 dígitos ", maxlength: "Cidade deve ter no máximo 50 dígitos"},
                 cep: {required: "Digite um CEP. Ex: 12345-678", minlength: "CEP deve ter no mínimo 8 dígitos ", maxlength: "CEP deve ter no máximo 8 dígitos"},
                 //telefone:{minlength: "Telefone deve ter no mínimo 10 dígitos", maxlength: "Telefone deve ter no máximo 10 dígitos"},
                 celular:{notEqual: "Opcional. Mas deve ser diferente do número do Telefone"},
@@ -150,7 +150,7 @@ function callView(){
                                 <label>Nome:</label>
                             </td>
                             <td colspan="7"> 
-                                <input type="text" id="nome" name="nome" placeholder="Digite aqui o nome do Enfermeiro" size="150" />
+                                <input type="text" id="nome" name="nome" placeholder="Digite aqui o nome do Enfermeiro" size="150" maxlength="100"/>
                             </td>
                         </tr>
                         <tr>
@@ -158,7 +158,7 @@ function callView(){
                                 <label>Naturalidade:</label>
                             </td>
                             <td>
-                                <input type="text" id="naturalidade" name="naturalidade" size="20" placeholder="Digite a naturalidade"/>
+                                <input type="text" id="naturalidade" name="naturalidade" size="20" placeholder="Digite a naturalidade" maxlength="30"/>
                             </td>
                             <td>
                                 <label>Data Nasc.:</label>
@@ -202,7 +202,7 @@ function callView(){
                                 <label>COREN:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="coren" name="coren" size="20" placeholder="Digite a COREN"/>
+                                <input type="text" id="coren" name="coren" size="20" placeholder="Digite a COREN" maxlength="6"/>
                             </td>
                         </tr>
                         <tr>
@@ -215,7 +215,7 @@ function callView(){
                                 <label>Endereço:</label>
                             </td>
                             <td colspan="7"> 
-                                <input type="text" id="nomeEndereco" name="nomeEndereco" placeholder="Digite aqui o endereço do Enfermeiro" size="140" />
+                                <input type="text" id="nomeEndereco" name="nomeEndereco" placeholder="Digite aqui o endereço do Enfermeiro" size="140" maxlength="60"/>
                             </td>
                         </tr>
                         <tr>
@@ -223,7 +223,7 @@ function callView(){
                                 <label>Número:</label>
                             </td>
                             <td>
-                                <input type="text" id="numeroEndereco" name="numeroEndereco" placeholder="Número" size="20" />
+                                <input type="text" id="numeroEndereco" name="numeroEndereco" placeholder="Número" size="20"/>
                             </td>
                             <td>
                                 <label>Complemento:</label>
@@ -243,7 +243,7 @@ function callView(){
                                 <label>Cidade:</label>
                             </td>
                             <td colspan="3">
-                                <input type="text" id="cidade" name="cidade" placeholder="Digite o nome da cidade" size="70" />
+                                <input type="text" id="cidade" name="cidade" placeholder="Digite o nome da cidade" size="70" maxlength="50"/>
                             </td>
                             <td>
                                 <label>CEP:</label>
