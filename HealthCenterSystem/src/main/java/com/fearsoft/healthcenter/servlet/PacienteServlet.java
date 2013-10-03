@@ -146,6 +146,7 @@ public class PacienteServlet extends HttpServlet {
         pacienteControle.getPaciente().setEstadoCivil(Enum.valueOf(EstadoCivil.class, request.getParameter("estadoCivil")));
         pacienteControle.getPaciente().setCpf(formatString(request.getParameter("cpf")));
         pacienteControle.getPaciente().setRg(formatString(request.getParameter("rg")));
+        pacienteControle.getPaciente().setSus(formatString(request.getParameter("sus")));
         
         pacienteControle.getPaciente().getEndereco().setNomeEndereco(request.getParameter("nomeEndereco"));
         pacienteControle.getPaciente().getEndereco().setNumero(Integer.parseInt(request.getParameter("numeroEndereco")));
@@ -161,7 +162,7 @@ public class PacienteServlet extends HttpServlet {
         pacienteControle.getPaciente().getUsuario().setName(request.getParameter("nome"));
         pacienteControle.getPaciente().getUsuario().setUsername(formatString(request.getParameter("cpf")));
         pacienteControle.getPaciente().getUsuario().setPassword(request.getParameter("senha"));
-        pacienteControle.getPaciente().getUsuario().setAuthority(Authority.ROLE_MED);
+        pacienteControle.getPaciente().getUsuario().setAuthority(Authority.ROLE_PAC);
 
         
         pacienteControle.saveOrUpdate(pacienteControle.getPaciente());

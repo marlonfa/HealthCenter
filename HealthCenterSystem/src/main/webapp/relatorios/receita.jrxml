@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="receita" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="36d165f0-a0d2-4d9f-997d-05649359d682">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="274"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="nomeMedico" class="java.lang.String"/>
+	<parameter name="nomePaciente" class="java.lang.String"/>
+	<parameter name="rg" class="java.lang.String"/>
+	<parameter name="prescricao" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="consulta_prescricao" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<rectangle>
+				<reportElement uuid="10a64e84-670c-484f-b1b0-69da6da8450c" x="0" y="0" width="555" height="70" backcolor="#006633"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="6e3a6d17-4cd0-4a13-929c-c0c08c15243c" style="Title" x="0" y="13" width="263" height="33" forecolor="#FFFFFF"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Health Center]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="22334a3f-2211-4076-b6aa-e895eb8a2c2e" style="SubTitle" x="381" y="46" width="174" height="22" forecolor="#FFFFFF"/>
+				<textElement/>
+				<text><![CDATA[Prescrição Médica]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="732" splitType="Stretch">
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="4fba7e16-35e8-45a3-a410-4eb3991ab70c" style="Column header" x="346" y="685" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="b6d8e5c9-cdf7-4fd2-a7a7-c6c058b758e7" x="69" y="582" width="410" height="1"/>
+			</line>
+			<textField>
+				<reportElement uuid="eae68994-512d-4ef6-a9cf-7702044561e8" x="117" y="594" width="343" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{nomeMedico}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="6d2d21d7-4db3-4407-b0ca-be7779e0eb36" x="86" y="594" width="31" height="20"/>
+				<textElement/>
+				<text><![CDATA[Dr(a):]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ebfdd8e8-f7ba-4434-bee4-ceab272f5cd7" x="17" y="71" width="526" height="404"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{prescricao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="819601b9-727f-46e8-91fe-08aebaff635c" x="17" y="12" width="52" height="20"/>
+				<textElement/>
+				<text><![CDATA[Paciente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e15445d7-ba1e-4f0e-906a-4c0944e48cf6" x="69" y="12" width="474" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{nomePaciente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="08f241ec-ce72-4ab2-a2ce-4c32688e8760" x="17" y="51" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Prescrição:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

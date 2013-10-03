@@ -53,7 +53,7 @@
                                 url: "TriagemServlet",
                                 type: "POST",
                                 data: 'triagem=' + id + '&tipoOperacao=' + 'removerTriagem',
-                                complete: reload
+                                complete: callDialogConfirmRemove
                             });
                             $(this).dialog("close");
                         },
@@ -79,7 +79,7 @@
             }
             
             function callDialogConfirmRemove(){
-                $("#dialog-remove" ).dialog({
+                $("#remove-confirm").dialog({
                       modal: true,
                       buttons: {
                         Ok: function() {
@@ -164,7 +164,7 @@
                     <div id="dialog-remove" title="Remoção de Triagem!" hidden="true">
                         <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Deseja Remover Triagem!</p>
                     </div>
-                    <div id="remove-confirm" title="Confirmação de Remoção de Triagem!" hidden="true">
+                    <div id="remove-confirm" title="Confirmação de Remoção de Fila de Triagem!" hidden="true">
                         <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Removido com Sucesso!</p>
                     </div>
                 </c:when>

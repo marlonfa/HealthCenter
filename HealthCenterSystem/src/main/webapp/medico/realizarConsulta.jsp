@@ -82,6 +82,20 @@
                     overlayClose: false
                 });
             }
+            
+            
+            
+            
+            function gerarReceita() {
+
+                $.ajax({
+                    url: "GerarReceitaMedicaServlet",
+                    type: "POST",
+//                    data: 'triagem=' + id,
+                    data: 'prescricao=' + $('#prescricao').val()
+//                    complete: callDialog
+                });
+            }
         </script>
     </head>
     <body>
@@ -146,6 +160,8 @@
 
             <input type="submit" value="Realizar" id="realizar" name="realizar" onclick="setConsulta();" style="margin-right: auto"/>
             <input type="submit" value="Voltar" id="voltar" name="voltar" onclick="mudarPagina();" style="margin-right: auto"/>
+            <button type="button" onclick="gerarReceita()">Gerar</button>
+            <input type="submit" value="Imprimir" id="imp" name="imprimir" onclick="gerarReceita();" style="margin-right: auto"/>
 
             <br />
             <br />

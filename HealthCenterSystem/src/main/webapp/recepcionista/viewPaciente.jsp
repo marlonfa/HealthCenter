@@ -80,6 +80,12 @@
                     <td>
                         ${paciente.rg}
                     </td>
+                    <td>
+                        <label>SUS:</label>
+                    </td>
+                    <td>
+                        ${paciente.sus}
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="8">

@@ -74,7 +74,6 @@ public class ConsultaServlet extends HttpServlet {
 
         session.setAttribute("consulta", this.consultaControle.getConsulta());
         session.setAttribute("filaConsultaRemovido", this.filaConsultaControle.getFilaConsulta());
-    
     }
 
     private void realizarConsulta(HttpServletRequest request) {
@@ -92,8 +91,11 @@ public class ConsultaServlet extends HttpServlet {
         this.historicoClinicoControle.getHistoricoClinico().setIdPaciente(this.consultaControle.getConsulta().getTriagem().getPaciente().getId());
         
         this.historicoClinicoControle.saveOrUpdate(this.historicoClinicoControle.getHistoricoClinico());
-
         this.filaConsultaControle.delete((FilaConsulta) request.getSession().getAttribute("filaConsultaRemovido"));
+        
+
+        //Chama a receita
+        
     }
 
     private void revomerConsulta(HttpServletRequest request) {

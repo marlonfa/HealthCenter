@@ -12,5 +12,6 @@ public enum Authority {
     ROLE_ADMIN,
     ROLE_ENF,
     ROLE_MED,
-    ROLE_REC;
+    ROLE_REC,
+    ROLE_PAC;
 }

@@ -48,7 +48,7 @@
                         url: "AdministradorServlet",  
                         type: "POST",
                         data: 'id='+ administradorId +'&tipoOperacao='+ 'removeAdministrador',
-                        complete: refreshTable
+                        complete: callDialogConfirmRemove
                     });
                      $( this ).dialog( "close" );
                   },
@@ -89,9 +89,20 @@
             $('#div_content').load('editAdministrador.jsp').delay(250).hide().fadeIn();
         }
         
-        function refreshTable(){
+        function reload(){
             location.reload();
         }
+        function callDialogConfirmRemove(){
+                $("#remove-confirm").dialog({
+                      modal: true,
+                      buttons: {
+                        Ok: function() {
+                          $( this ).dialog( "close" );
+                          reload();
+                        }
+                      }
+                    });
+                } 
 </script>
     </head>
     <body>
@@ -147,5 +158,8 @@
              <div id="dialog-confirm" title="Deseja Realmente Excluir este Registro?" hidden="true">
             <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Se você clicar em Remover, o Registro Selecionado Será Removido Permanentemente.</p>
         </div>
+             <div id="remove-confirm" title="Confirmação de Remoção de Administrador!" hidden="true">
+                        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Removido com Sucesso!</p>
+                    </div>
     </body>
 </html>

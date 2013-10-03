@@ -134,7 +134,7 @@ private RecepcionistaControle recepcionistaControle;
         recepcionistaControle.getRecepcionista().setDataNascimento(data);
         
         String sexo = request.getParameter("sexo");
-        if("Masculino".equals(sexo)){
+        if(sexo.equals("Masculino")){
             recepcionistaControle.getRecepcionista().setSexo(Sexo.MASCULINO);
         }else{
             recepcionistaControle.getRecepcionista().setSexo(Sexo.FEMININO);
@@ -158,7 +158,7 @@ private RecepcionistaControle recepcionistaControle;
         recepcionistaControle.getRecepcionista().getUsuario().setName(request.getParameter("nome"));
         recepcionistaControle.getRecepcionista().getUsuario().setUsername(formatString(request.getParameter("cpf")));
         recepcionistaControle.getRecepcionista().getUsuario().setPassword(request.getParameter("senha"));
-        recepcionistaControle.getRecepcionista().getUsuario().setAuthority(Authority.ROLE_MED);
+        recepcionistaControle.getRecepcionista().getUsuario().setAuthority(Authority.ROLE_REC);
 
         
         recepcionistaControle.saveOrUpdate(recepcionistaControle.getRecepcionista());

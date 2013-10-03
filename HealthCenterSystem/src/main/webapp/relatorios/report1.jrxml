@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7d9d86cd-6776-4acc-a666-301645304137">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     administrador.`id` AS administrador_id,
+     administrador.`cpf` AS administrador_cpf,
+     administrador.`data_nascimento` AS administrador_data_nascimento,
+     administrador.`estado_civil` AS administrador_estado_civil,
+     administrador.`naturalidade` AS administrador_naturalidade,
+     administrador.`nome` AS administrador_nome,
+     administrador.`rg` AS administrador_rg,
+     administrador.`sexo` AS administrador_sexo,
+     administrador.`cargo` AS administrador_cargo,
+     administrador.`contato` AS administrador_contato,
+     administrador.`endereco` AS administrador_endereco,
+     administrador.`users` AS administrador_users
+FROM
+     `administrador` administrador]]>
+	</queryString>
+	<field name="administrador_id" class="java.lang.Long"/>
+	<field name="administrador_cpf" class="java.lang.String"/>
+	<field name="administrador_data_nascimento" class="java.sql.Date"/>
+	<field name="administrador_estado_civil" class="java.lang.String"/>
+	<field name="administrador_naturalidade" class="java.lang.String"/>
+	<field name="administrador_nome" class="java.lang.String"/>
+	<field name="administrador_rg" class="java.lang.String"/>
+	<field name="administrador_sexo" class="java.lang.String"/>
+	<field name="administrador_cargo" class="java.lang.String"/>
+	<field name="administrador_contato" class="java.lang.Long"/>
+	<field name="administrador_endereco" class="java.lang.Long"/>
+	<field name="administrador_users" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4d8a346c-a517-4891-bc60-720c268fd18b" style="Title" x="0" y="13" width="263" height="33"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Leaf Green Title]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="424433de-feb9-4124-9e84-62352c8d7189" style="SubTitle" x="100" y="46" width="174" height="22"/>
+				<textElement/>
+				<text><![CDATA[Leaf Green SubTitle]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<line>
+				<reportElement uuid="85d115c8-2666-4d38-91be-841be229af80" positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement uuid="98fc66db-9763-48a5-abd6-65c7c85ebbd0" style="Column header" x="0" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e4891660-61aa-49f7-b7ce-d17ce81fef40" style="Column header" x="46" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_cpf]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5a0cb39c-80d0-4c72-b51a-cd5a58dbd9a6" style="Column header" x="92" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_data_nascimento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="624894f9-c5df-4f6f-a531-70a4d1da1c51" style="Column header" x="138" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_estado_civil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="40b85761-318c-4d35-9fe2-9524556d8501" style="Column header" x="184" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_naturalidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="489a8eee-0343-4e69-9cc3-f70de4e2b8f1" style="Column header" x="230" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="50816a9a-eb38-46e6-ae9d-7159cab12a79" style="Column header" x="276" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_rg]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b3df92ee-4cf8-4f25-a615-174f0cd0f141" style="Column header" x="322" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_sexo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fba4f971-6e62-4c8d-b826-2fe7297e4285" style="Column header" x="368" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_cargo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0b65aa6e-dcc4-44d8-b847-cddfd0c4a42d" style="Column header" x="414" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_contato]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2a47581c-351d-4b56-b275-472db96083b8" style="Column header" x="460" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_endereco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2307037f-0f6e-47ce-922d-e148778f6769" style="Column header" x="506" y="19" width="46" height="15"/>
+				<textElement/>
+				<text><![CDATA[administrador_users]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="16" splitType="Stretch">
+			<line>
+				<reportElement uuid="c8979be0-9599-4108-b7da-49ac21488d39" positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement uuid="a7382bac-989e-4a54-9ea5-1fb75853f17e" style="Detail" x="0" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8d8c2d98-722a-4615-ad4a-c07baff6e4af" style="Detail" x="46" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_cpf}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d8aca26a-ed6b-41a1-835e-3da3dbcfa8db" style="Detail" x="92" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_data_nascimento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9e5c3abc-4905-4894-b71d-5b363f8926e3" style="Detail" x="138" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_estado_civil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4185074f-e086-4de8-8961-c692d89ffdc9" style="Detail" x="184" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_naturalidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a1a3e325-94e4-435e-85ef-9e3d598682b9" style="Detail" x="230" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2a7102ee-fcde-4f5d-8800-747047faae8a" style="Detail" x="276" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_rg}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2945165e-0b62-4fdb-bbe0-5384082b8df6" style="Detail" x="322" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d5f6b5ca-52a1-4412-b539-65783e900692" style="Detail" x="368" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_cargo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b9b0bcc7-6532-43b3-968e-4d18008c4c98" style="Detail" x="414" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_contato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="277a55ba-8b75-4117-9898-6e952e7814ac" style="Detail" x="460" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_endereco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="57716d61-b82f-4b51-abf8-23827bfed528" style="Detail" x="506" y="0" width="46" height="15"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{administrador_users}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement uuid="153d37a1-c057-42a4-b60e-d5cc1edf167d" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="90b7056a-77eb-43a1-aa13-d586d3b4c06f" style="Column header" x="433" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="4256f0ee-705c-4359-8075-2d80ed43ac5b" style="Column header" x="513" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement uuid="69da6281-f572-4af1-bc28-a1fd8c649749" style="Column header" x="0" y="0" width="197" height="20"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

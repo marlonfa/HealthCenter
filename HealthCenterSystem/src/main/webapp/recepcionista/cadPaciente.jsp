@@ -57,6 +57,7 @@
                     //cpf: {required: true, minlength: 14, maxlength: 14},
                     cpf: {cpf: 'both'},
                     rg: {required: true, minlength: 12, maxlength: 12},
+                    sus: {required: true, minlength: 15, maxlength: 15},
                     nomeEndereco: {required: true, minlength: 6, maxlength: 60},
                     numeroEndereco: {required: true, minlength: 1, maxlength: 6, number: true},
                     //complemento: {required: false, minlngth: 3, maxlength: 30},
@@ -77,6 +78,7 @@
                 //CPF não precisa pois usa o plugin jQueryValidaCPFeCPNPJ
                 //cpf: {required: "Digite um CPF. Ex: 123.456.789-10", minlength: "CPF deve ter no mínimo 11 dígitos ", maxlength: "CPF deve ter no máximo 11 dígitos"},
                 rg: {required: "Digite um RG. Ex: 12.345.678-9", minlength: "RG deve ter no mínimo 9 dígitos ", maxlength: "RG deve ter no máximo 9 dígitos"},
+                sus: {required: "Número do SUS é Obrigatório", minlength: "O Número do SUS deve ter no mínimo 15 dígitos!", maxlength: "O Número do SUS deve ter no máximo 15 dígitos!"},
                 nomeEndereco: {required: "Digite um endereço. Ex: Rua Getúlio Vargas", minlength: "Endereço deve ter no mínimo 6 dígitos ", maxlength: "Endereço deve ter no máximo 50 dígitos"},
                 numeroEndereco: {required: "Digite um número. Ex: 1234", minlength: "Número deve ter no mínimo 1 dígitos ", maxlength: "Número deve ter no máximo 6 dígitos", number: "Digite somente números"},
                 //complemento: {required: "Opcional", minlength: "Complemento deve ter no mínimo 3 dígitos", maxlength: "Complemento deve ter no máximo 30 dígitos"},
@@ -103,7 +105,7 @@ function cadPaciente(){
             type: "POST",  
             data: 'nome='+ $('#nome').val() +'&naturalidade='+ $('#naturalidade').val() + 
                   '&dataNascimento='+ $('#dataNascimento').val() +'&sexo='+ $('#sexo').val() +'&estadoCivil='+ $('#estadoCivil').val() + 
-                  '&cpf='+ $('#cpf').val() +'&rg='+ $('#rg').val() +'&nomeEndereco='+ $('#nomeEndereco').val() +
+                  '&cpf='+ $('#cpf').val() +'&rg='+ $('#rg').val() +'&sus='+ $('#sus').val() +'&nomeEndereco='+ $('#nomeEndereco').val() +
                   '&numeroEndereco='+ $('#numeroEndereco').val() +'&complemento='+ $('#complemento').val() +'&bairro='+ $('#bairro').val() +
                   '&cidade='+ $('#cidade').val() +'&cep='+ $('#cep').val() +'&telefone='+ $('#telefone').val() +'&celular='+ $('#celular').val() +
                   '&email='+ $('#email').val() +'&senha='+ $('#senha').val() +'&tipoOperacao='+ $('#operacao').val(),
@@ -195,6 +197,12 @@ function callView(){
                             </td>
                             <td>
                                 <input type="text" id="rg" name="rg" size="20" placeholder="__.___.___-_"/>
+                            </td>
+                            <td>
+                                <label>SUS:</label>
+                            </td>
+                            <td>
+                                <input type="text" id="sus" name="sus" size="20" maxlength="15"/>
                             </td>
                         </tr>
                         <tr>
