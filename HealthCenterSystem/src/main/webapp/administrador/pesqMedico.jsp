@@ -150,5 +150,6 @@
              <div id="dialog-confirm" title="Deseja Realmente Excluir este Registro?" hidden="true">
             <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Se você clicar em Remover, o Registro Selecionado Será Removido Permanentemente.</p>
         </div>
+             
     </body>
 </html>

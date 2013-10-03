@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <META http-equiv="REFRESH" content="30">
+        <!--<META http-equiv="REFRESH" content="30">-->
         <link href="../resources/css/style.css" rel="stylesheet" type="text/css" />
         <link href="../resources/css/table_jui.css" rel="stylesheet" type="text/css" />
         <!--<link href="../resources/css/jquery-ui-1.8.4.custom.css" rel="stylesheet" type="text/css" />-->
@@ -52,7 +52,7 @@
                                 url: "ConsultaServlet",
                                 type: "POST",
                                 data: 'consulta=' + id + '&tipoOperacao=' + 'removerConsulta',
-                                complete: reload
+                                complete: callDialogConfirmRemove
                             });
                             $(this).dialog("close");
                         },
@@ -72,6 +72,22 @@
                 parent.$.fn.colorbox.close();
             }
             ;
+            function reload() {
+                location.reload();
+            }
+            
+            function callDialogConfirmRemove(){
+                $("#dialog-remove" ).dialog({
+                      modal: true,
+                      buttons: {
+                        Ok: function() {
+                          $( this ).dialog( "close" );
+                          reload();
+                        }
+                      }
+                    });
+                } 
+            
         </script>
     </head>
     <body>
@@ -145,12 +161,12 @@
                         </tfoot>
                     </table>
 
-                    <div id="dialog-confirm" title="Realização de Triagem Efetuada com Sucesso!" hidden="true">
-                        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Realização de Triagem Efetuada com Sucesso!</p>
+                    <div id="dialog-confirm" title="Realização de Consulta Efetuada com Sucesso!" hidden="true">
+                        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Realização de Consulta Efetuada com Sucesso!</p>
                     </div>
 
                     <div id="dialog-remove" title="Remoção de Consulta!" hidden="true">
-                        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Deseja Remover Consulta!</p>
+                        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Consulta Removida com Sucesso!</p>
                     </div>
                 </c:when>
                 <c:otherwise>

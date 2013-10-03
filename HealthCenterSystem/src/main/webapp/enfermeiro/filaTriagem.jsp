@@ -11,7 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <META http-equiv="REFRESH" content="30">
+        <!--<META http-equiv="REFRESH" content="30">-->
         <link href="../resources/css/style.css" rel="stylesheet" type="text/css" />
         <link href="../resources/css/table_jui.css" rel="stylesheet" type="text/css" />
         <!--<link href="../resources/css/jquery-ui-1.8.4.custom.css" rel="stylesheet" type="text/css" />-->
@@ -77,6 +77,18 @@
             function reload() {
                 location.reload();
             }
+            
+            function callDialogConfirmRemove(){
+                $("#dialog-remove" ).dialog({
+                      modal: true,
+                      buttons: {
+                        Ok: function() {
+                          $( this ).dialog( "close" );
+                          reload();
+                        }
+                      }
+                    });
+                } 
         </script>
     </head>
     <body>
@@ -151,6 +163,9 @@
 
                     <div id="dialog-remove" title="Remoção de Triagem!" hidden="true">
                         <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Deseja Remover Triagem!</p>
+                    </div>
+                    <div id="remove-confirm" title="Confirmação de Remoção de Triagem!" hidden="true">
+                        <p><span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>Removido com Sucesso!</p>
                     </div>
                 </c:when>
                 <c:otherwise>
